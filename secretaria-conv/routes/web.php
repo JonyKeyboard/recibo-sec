@@ -7,8 +7,9 @@ use App\Http\Controllers\FiliadoController;
     return view('welcome');
 }); */
 
-Route::get('filiados', [FiliadoController::class, 'index']);
-Route::get('filiados/cadastrar', [FiliadoController::class, 'create']);
+Route::get('filiados', [FiliadoController::class, 'index'])->name('listar_filiados');
+Route::get('filiados/cadastrar', [FiliadoController::class, 'create'])->name('form_criar_filiado');
 Route::post('filiados/cadastrar', [FiliadoController::class, 'store']);
+Route::delete('filiados/{id}', [FiliadoController::class, 'destroy']);
 
 

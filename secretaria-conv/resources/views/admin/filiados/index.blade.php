@@ -6,18 +6,17 @@
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
     <li class="breadcrumb-item active">Obreiros</li>
-    <a class="ml-auto mr-0" href="filiados/cadastrar">Novo obreiro</a>
+    <a class="ml-auto mr-0 ml-auto mr-0" href="{{ route('form_criar_filiado') }}">Novo obreiro</a>
 </ol>
-<div class="card mb-4">
-    <div class="card-body">
-        DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-        <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-        .
-    </div>
+
+@if(!empty($mensagem))
+<div class="alert alert-success">
+    {{$mensagem}}
 </div>
+@endif
 
 @endsection
-
+<!---------------------------LISTAGEM--------------------------------->
 @section('conteudo')
 
 <div class="card mb-4">
@@ -35,7 +34,7 @@
                         <th>Office</th>
                         <th>Age</th>
                         <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Ação</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -45,7 +44,7 @@
                         <th>Office</th>
                         <th>Age</th>
                         <th>Start date</th>
-                        <th>Salary</th>
+                        <th>Ação</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -56,7 +55,13 @@
                             <td>Edinburgh</td>
                             <td>61</td>
                             <td>2011/04/25</td>
-                            <td>$320,800</td>
+                            <td>
+                                <form method="POST" action="/filiados/{{$filiado->id}}" onsubmit="return confirm('Deseja excluir o obreiro {{ addslashes($filiado->nome)}}?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-outline-primary">Remover</button>
+                                </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
