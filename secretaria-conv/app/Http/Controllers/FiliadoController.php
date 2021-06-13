@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FiliadoFormRequest;
 use App\Models\Filiado;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,8 @@ class FiliadoController extends Controller
         return view('admin.filiados.create');
     }
 
-    public function store(Request $request){
+    public function store(FiliadoFormRequest $request){
+
         $nome = $request->nome;
         Filiado::create([
             'nome' => $nome

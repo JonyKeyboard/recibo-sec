@@ -8,13 +8,16 @@
     <li class="breadcrumb-item active">Cadastro</li>
     <a class="ml-auto mr-0" href="/filiados">Voltar</a>
 </ol>
-{{-- <div class="card mb-4">
-    <div class="card-body">
-        DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-        <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-        .
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     </div>
-</div> --}}
+@endif
 
 @endsection
 

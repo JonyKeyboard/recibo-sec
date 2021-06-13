@@ -56,11 +56,21 @@
                             <td>61</td>
                             <td>2011/04/25</td>
                             <td>
-                                <form method="POST" action="/filiados/{{$filiado->id}}" onsubmit="return confirm('Deseja excluir o obreiro {{ addslashes($filiado->nome)}}?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-outline-primary">Remover</button>
-                                </form>
+                                <div class="d-flex">
+                                    <form method="" action="/filiados/">
+                                        @csrf
+                                        <button class="btn btn-sm btn-outline-primary">
+                                            <i class="far fa-edit"></i>
+                                        </button>
+                                    </form>
+                                    <form method="POST" action="/filiados/{{$filiado->id}}" onsubmit="return confirm('Deseja excluir o obreiro {{ addslashes($filiado->nome)}}?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-sm btn-outline-danger ml-2">
+                                            <i class="far fa-trash-alt"></i>
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @endforeach
