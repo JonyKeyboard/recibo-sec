@@ -19,10 +19,20 @@
 
 @section('conteudo')
 <form method="post">
+    @csrf
     <div class="form-group">
         <label for="nome">Nome</label>
-        <input type="text" class="form-control" name="nome" id="nome">
-
+        <input type="text" class="form-control" name="nome" id="nome"> <!-- o meu name="nome" é quem será recuperado no request-->
+        <!--<label for="nome">Data de Nascimento</label>
+        <input type="text" class="form-control" name="nome" id="nascimento">
+        <label for="nome">CPF</label>
+        <input type="text" class="form-control" name="nome" id="cpf">
+        <label for="nome">Nº COMEAD</label>
+        <input type="text" class="form-control" name="nome" id="comead">
+        <label for="nome">Nº CGADB</label>
+        <input type="text" class="form-control" name="nome" id="cgadb">
+        <label for="nome">Esposa</label>
+        <input type="text" class="form-control" name="nome" id="esposa"> -->
     </div>
     <button class="btn btn-primary">Adicionar</button>
 </form>

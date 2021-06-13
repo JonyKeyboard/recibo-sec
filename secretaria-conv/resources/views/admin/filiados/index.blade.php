@@ -51,7 +51,7 @@
                 <tbody>
                     @foreach ($filiados as $filiado)
                         <tr>
-                            <td><?=$filiado?></td>
+                            <td>{{ $filiado->nome }}</td>
                             <td>System Architect</td>
                             <td>Edinburgh</td>
                             <td>61</td>
