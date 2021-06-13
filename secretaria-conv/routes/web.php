@@ -8,5 +8,6 @@ use App\Http\Controllers\FiliadoController;
 }); */
 
 Route::get('filiados', [FiliadoController::class, 'index']);
+Route::get('filiados/cadastrar', [FiliadoController::class, 'create']);
 
 
