@@ -31,7 +31,7 @@ class FiliadoFormRequest extends FormRequest
     public function messages(){
         return [
             'nome.required' => 'Campo :attribute é obrigatório',
-            'nome.min' => 'Campo nome precisa ter no mínimo 2 caracteres'
+            'nome.min' => 'Campo :attribute requer o mínimo de 2 caracteres'
         ];
     }
 }

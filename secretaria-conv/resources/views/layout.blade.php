@@ -49,23 +49,14 @@
                             </a>
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link" href="/filiados">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Obreiros
+                                <div class="sb-nav-link-icon"><i class="fas fa-user-alt"></i></div>
+                                Filiado
                             </a>
                             <a class="nav-link" href="/filiais">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-place-of-worship"></i></div>
                                 Filiais
                             </a>
 
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
