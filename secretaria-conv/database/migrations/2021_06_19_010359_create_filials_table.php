@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFiliadosTable extends Migration
+class CreateFilialsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateFiliadosTable extends Migration
      */
     public function up()
     {
-        Schema::create('filiados', function (Blueprint $table) {
+        Schema::create('filials', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('cpf');
-            $table->string('imageFiliado');
-            $table->dateTime('nascimento');
-            $table->string('esposa');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +26,6 @@ class CreateFiliadosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('filiados');
+        Schema::dropIfExists('filials');
     }
 }

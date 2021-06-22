@@ -29,21 +29,21 @@
             <table class="table table-striped table-hover" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
+                        <th>Filiado</th>
                         <th>Position</th>
                         <th>Office</th>
                         <th>Age</th>
-                        <th>Start date</th>
+                        <th>Aniversário</th>
                         <th>Ação</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
+                        <th>Filiado</th>
                         <th>Position</th>
                         <th>Office</th>
                         <th>Age</th>
-                        <th>Start date</th>
+                        <th>Aniversário</th>
                         <th>Ação</th>
                     </tr>
                 </tfoot>
@@ -54,15 +54,17 @@
                             <td>System Architect</td>
                             <td>Edinburgh</td>
                             <td>61</td>
-                            <td>2011/04/25</td>
+                            <td>{{ date('d/m/Y', strtotime($filiado->nascimento)) }}</td>
                             <td>
                                 <div class="d-flex">
-                                    <form method="" action="/filiados/">
-                                        @csrf
+                                    {{-- <form method="GET" action="/filiados/{{$filiado->id}}">
+                                        @csrf --}}
+                                    <a href="/filiados/{{ $filiado->id }}/editar">
                                         <button class="btn btn-sm btn-outline-primary">
                                             <i class="far fa-edit"></i>
                                         </button>
-                                    </form>
+                                    </a>
+                                    {{-- </form> --}}
                                     <form method="POST" action="/filiados/{{$filiado->id}}" onsubmit="return confirm('Deseja excluir o obreiro {{ addslashes($filiado->nome)}}?')">
                                         @csrf
                                         @method('DELETE')
