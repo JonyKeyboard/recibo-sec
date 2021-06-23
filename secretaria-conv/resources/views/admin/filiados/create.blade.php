@@ -60,6 +60,7 @@
                                 <input type="date" class="form-control" name="nascimento" id="nascimento"
                                 value="{{ isset($filiado) ? date('Y-m-d', strtotime($filiado->nascimento)) : ''}}">
                                 {{-- {{ $filiado->nascimento->format('Y-m-d') }} --}}
+
                             </div>
                         </div>
                         <div class="col-8">
@@ -99,7 +100,7 @@
                 <!--Foto do Formulário-->
                 <div class="col-md-4">
                     <div class="d-flex justify-content-center">
-                        <div class="card" style="width: 12rem;">
+                        <div class="card" style="width: 15rem;">
                             <img src="/img/filiados/{{ $filiado->imageFiliado ?? '../imagem-3x4.jpg'}}" class=""> <!-- -->
                             <label for="imageFiliado"> Foto do Obreiro:</label>
                             <input type="file" name="imageFiliado" class="form-control-file">

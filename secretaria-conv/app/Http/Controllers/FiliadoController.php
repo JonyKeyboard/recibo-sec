@@ -68,30 +68,19 @@ class FiliadoController extends Controller
         $filiado->esposa = $request->esposa;
 
         //image upload
-        $filiado->imageFiliado = $filiado->validaImagem($request);
-
-        var_dump($filiado->nascimento);
+        if(isset($request->imageFiliado)){
+            $filiado->imageFiliado = $filiado->validaImagem($request);
+        }
 
         /*$filiado->comead = $request->comead;
         $filiado->cgadb = $request->cgadb;
         $filiado->funcao = $request->funcao; */
 
+        $filiado->update();
+        $request->session()
+        ->flash('mensagem', "{$filiado->nome} atualizado com sucesso");
 
-
-        //$filiado->update();
-        //$request->session()
-        //->flash('mensagem', "{$filiado->nome} atualizado com sucesso");
-
-        //return redirect()->route('listar_filiados');
-
-
-
-
-
-
-
-        //TALVEZ TENHA QUE CRIAR INSTÂNCIA
-        //var_dump(Filiado::findOrFail($request->id)->update($request->all()));
+        return redirect()->route('listar_filiados');
 
     }
 }
