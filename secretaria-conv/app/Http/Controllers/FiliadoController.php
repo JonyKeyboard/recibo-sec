@@ -25,21 +25,26 @@ class FiliadoController extends Controller
 
         $filiado = new Filiado();
         $filiado->nome = $request->nome;
-         $filiado->cpf = $request->cpf;
+        $filiado->cpf = $filiado->validaCPF($request->cpf) ? $request->cpf : "cpf inválido";
+
+        var_dump($filiado->verificaCadastroCPF($filiado->cpf));
+
+        $filiado->cpf = $request->cpf;
         $filiado->nascimento = $request->nascimento;
         $filiado->esposa = $request->esposa;
         /*$filiado->comead = $request->comead;
         $filiado->cgadb = $request->cgadb;
         $filiado->funcao = $request->funcao; */
 
+
         //image upload
         $filiado->imageFiliado = $filiado->validaImagem($request);
-
+/*
         $filiado->save();
         $request->session()
         ->flash('mensagem', "{$filiado->nome} adicionado com sucesso");
 
-        return redirect()->route('listar_filiados');
+        return redirect()->route('listar_filiados'); */
     }
 
     public function destroy(Request $request){
@@ -54,7 +59,7 @@ class FiliadoController extends Controller
 
         $filiado = Filiado::findOrFail($id);
 
-        //var_dump($filiado);
+        var_dump($filiado);
 
         return view('admin.filiados.create', compact('filiado'));
     }

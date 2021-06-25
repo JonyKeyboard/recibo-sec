@@ -28,6 +28,9 @@ class Filiado extends Model
             return $imageName;
         }
     }
+    public function verificaCadastroCPF($cpf) {
+        return Filiado::where('cpf', 'LIKE', $cpf)->exists();
+    }
     public function validaCPF($cpf) {
 
         // Extrai somente os números
@@ -52,6 +55,9 @@ class Filiado extends Model
             if ($cpf[$c] != $d) {
                 return false;
             }
+        }
+        if(!Filiado::where('cpf', 'LIKE', $cpf)->exists()){
+            return false;
         }
         return true;
 

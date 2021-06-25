@@ -45,6 +45,7 @@
                                 <input type="text" class="form-control" name="nome" id="nome" value="{{ $filiado->nome ?? ''}}"> <!-- o meu name="nome" é quem será recuperado no request-->
                             </div>
                         </div>
+                        {{--------------------------Unique(Database) para validar CPF---------------------------}}
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="cpf">CPF</label>
