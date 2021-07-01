@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\ValidaCPF;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -26,7 +27,7 @@ class FiliadoFormRequest extends FormRequest
     {
         return [
             'nome' => 'required|min:2',
-            'cpf' => ['required', 'string', Rule::unique('filiados')->ignore($this->id)],
+            'cpf' => ['required', 'string', new ValidaCPF , Rule::unique('filiados')->ignore($this->id)],
             //'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->user),
 
 

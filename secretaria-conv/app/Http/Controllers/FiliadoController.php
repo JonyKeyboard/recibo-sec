@@ -25,7 +25,7 @@ class FiliadoController extends Controller
 
         $filiado = new Filiado();
         $filiado->nome = $request->nome;
-        $filiado->cpf = $filiado->validaCPF($request->cpf) ? $request->cpf : "cpf inválido";
+        $filiado->cpf = $request->cpf;
 
         $filiado->nascimento = $request->nascimento;
         $filiado->esposa = $request->esposa;

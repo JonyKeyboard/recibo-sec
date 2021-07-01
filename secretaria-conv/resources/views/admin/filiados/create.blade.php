@@ -114,7 +114,7 @@
                         <div class="card" style="width: 15rem;">
                             <img src="/img/filiados/{{ $filiado->imageFiliado ?? '../imagem-3x4.jpg'}}" class=""> <!-- -->
                             <label for="imageFiliado"> Foto do Obreiro:</label>
-                            <input type="file" name="imageFiliado" class="form-control-file">
+                            <input type="file" name="imageFiliado" id="imageFiliado" class="form-control-file">
                         </div>
                     </div>
 
