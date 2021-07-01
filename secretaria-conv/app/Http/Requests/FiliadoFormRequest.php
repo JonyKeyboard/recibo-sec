@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class FiliadoFormRequest extends FormRequest
 {
@@ -24,14 +25,19 @@ class FiliadoFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nome' => 'required|min:2'
+            'nome' => 'required|min:2',
+            'cpf' => ['required', 'string', Rule::unique('filiados')->ignore($this->id)],
+            //'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore($this->user),
+
+
         ];
     }
 
     public function messages(){
         return [
-            'nome.required' => 'Campo :attribute é obrigatório',
-            'nome.min' => 'Campo :attribute requer o mínimo de 2 caracteres'
+            'required' => 'Campo :attribute é obrigatório',
+            'nome.min' => 'Campo :attribute requer o mínimo de 2 caracteres',
+            'cpf.unique' => 'O :attribute informado já está cadastrado'
         ];
     }
 }

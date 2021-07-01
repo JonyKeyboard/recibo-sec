@@ -42,14 +42,24 @@
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
-                                <input type="text" class="form-control" name="nome" id="nome" value="{{ $filiado->nome ?? ''}}"> <!-- o meu name="nome" é quem será recuperado no request-->
+                                <input type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" id="nome" value="{{ $filiado->nome ?? ''}}"> <!-- o meu name="nome" é quem será recuperado no request-->
+                                @error('nome')
+                                <div class="invalid-feedback">
+                                    {{$message}}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                         {{--------------------------Unique(Database) para validar CPF---------------------------}}
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="cpf">CPF</label>
-                                <input type="text" class="form-control" name="cpf" id="cpf" value="{{ $filiado->cpf ?? ''}}">
+                                <input type="text" class="form-control @error('cpf') is-invalid @enderror" autocomplete="off" name="cpf" id="cpf" value="{{ $filiado->cpf ?? ''}}">
+                                @error('cpf')
+                                <div class="invalid-feedback">
+                                    {{$message}}
+                                </div>
+                                @enderror
                             </div>
                         </div>
                     </div>

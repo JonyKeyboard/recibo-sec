@@ -17,9 +17,9 @@ class CreateFiliadosTable extends Migration
             $table->id();
             $table->string('nome');
             $table->string('cpf');
-            $table->string('imageFiliado');
-            $table->dateTime('nascimento');
-            $table->string('esposa');
+            $table->string('imageFiliado')->nullable();
+            $table->dateTime('nascimento')->nullable();
+            $table->string('esposa')->nullable();
         });
     }
 

@@ -97,6 +97,8 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
         <!--JavaScript do bootstrap-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <!--JQuery Mask Plugin-->
+        <script src="/js/jquery.mask.min.js"></script>
         <!--some o menu sanduiche-->
         <script src="/js/scripts.js"></script>
         <!--Os dataTables-->
