@@ -2,7 +2,7 @@
 
 @section('cabecalho')
 
-<h1 class="mt-4">@if(isset($filiado)) Editar Obreiro @else Cadastrar Obreiro @endif</h1>
+<h1 class="mt-4">@if(isset($filiado)) Editar Filiado @else Cadastrar Filiado @endif</h1>
 <ol class="breadcrumb mb-4">
     <li class="breadcrumb-item"><a href="#">Obreiro</a></li>
     <li class="breadcrumb-item active">@if(isset($filiado)) Edição @else Cadastro @endif</li>
@@ -42,7 +42,7 @@
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="nome">Nome</label>
-                                <input type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" id="nome" value="{{ $filiado->nome ?? ''}}"> <!-- o meu name="nome" é quem será recuperado no request-->
+                                <input type="text" class="form-control @error('nome') is-invalid @enderror" name="nome" id="nome" value="{{ $filiado->nome ?? old('nome')}}"> <!-- o meu name="nome" é quem será recuperado no request-->
                                 @error('nome')
                                 <div class="invalid-feedback">
                                     {{$message}}
@@ -54,7 +54,7 @@
                         <div class="col-4">
                             <div class="form-group">
                                 <label for="cpf">CPF</label>
-                                <input type="text" class="form-control @error('cpf') is-invalid @enderror" autocomplete="off" name="cpf" id="cpf" value="{{ $filiado->cpf ?? ''}}">
+                                <input type="text" class="form-control @error('cpf') is-invalid @enderror" autocomplete="off" name="cpf" id="cpf" value="{{ $filiado->cpf ?? old('cpf')}}">
                                 @error('cpf')
                                 <div class="invalid-feedback">
                                     {{$message}}
@@ -69,7 +69,7 @@
                             <div class="form-group">
                                 <label for="nascimento">Nascimento</label>
                                 <input type="date" class="form-control" name="nascimento" id="nascimento"
-                                value="{{ isset($filiado) ? date('Y-m-d', strtotime($filiado->nascimento)) : ''}}">
+                                value="{{ isset($filiado) ? date('Y-m-d', strtotime($filiado->nascimento)) : old('nascimento')}}">
                                 {{-- {{ $filiado->nascimento->format('Y-m-d') }} --}}
 
                             </div>
@@ -77,7 +77,7 @@
                         <div class="col-8">
                             <div class="form-group">
                                 <label for="esposa">Esposa</label>
-                                <input type="text" class="form-control" name="esposa" id="esposa" value="{{ $filiado->esposa ?? ''}}">
+                                <input type="text" class="form-control" name="esposa" id="esposa" value="{{ $filiado->esposa ?? old('esposa')}}">
                             </div>
                         </div>
                     </div>
@@ -112,8 +112,9 @@
                 <div class="col-md-4">
                     <div class="d-flex justify-content-center">
                         <div class="card" style="width: 15rem;">
-                            <img src="/img/filiados/{{ $filiado->imageFiliado ?? '../imagem-3x4.jpg'}}" class=""> <!-- -->
-                            <label for="imageFiliado"> Foto do Obreiro:</label>
+                            <!--<img src="/img/filiados/{ $filiado->imageFiliado ?? '../imagem-3x4.jpg'}}" class=""> -->
+                            <img id="img">
+                            <label for="imageFiliado"> Foto do Filiado:</label>
                             <input type="file" name="imageFiliado" id="imageFiliado" class="form-control-file">
                         </div>
                     </div>
