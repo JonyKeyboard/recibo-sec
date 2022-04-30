@@ -1,0 +1,44 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    min-height: 100vh;
+}
+
+/* NAVBAR */
+
+header {
+    position: fixed;
+    background-color: #132835;
+    padding: 20px;
+    width: 100%;
+    height: 30px;
+}
+
+.logo h3 {
+    color: #FFF;    
+    text-transform: uppercase;
+    font-size: 25px;
+}
+
+.logo span {
+    color: #51B3EC;
+}
+
+.btn-sair{
+    float: right;
+    text-decoration: none;
+    margin-top: -25px;
+    margin-right: 50px;
+    color: #fff;
+    text-transform: uppercase;
+    transition: 0.5s;
+    
+}
+.btn-sair:hover{
+    color: #4a9fcf;
+}
+
+/* SIDEBAR */
