@@ -8,7 +8,6 @@ html {
 }
 
 /* NAVBAR */
-
 header {
     position: fixed;
     background-color: #132835;
@@ -27,7 +26,7 @@ header {
     color: #51B3EC;
 }
 
-.btn-sair{
+.btn-sair {
     float: right;
     text-decoration: none;
     margin-top: -25px;
@@ -37,8 +36,50 @@ header {
     transition: 0.5s;
     
 }
-.btn-sair:hover{
+
+.btn-sair:hover {
     color: #4a9fcf;
 }
 
 /* SIDEBAR */
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    margin-top: 70px;
+    padding-top: 30px;
+    left: 0;
+    background: #193446;
+}
+
+.sidebar .image {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.sidebar h2 {
+    color: #CCC;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.sidebar a {
+    color: #FFF;
+    display: block;
+    line-height: 60px;
+    text-decoration: none;
+    padding-left: 40px;
+    transition: 0.5s;
+}
+
+.sidebar a:hover {
+    background-color: #51B3EC;
+}
+
+/* FORM */
+main {
+    padding-top: 80px;
+    padding-left: 220px;
+}
+
