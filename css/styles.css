@@ -44,7 +44,7 @@ header {
 /* SIDEBAR */
 .sidebar {
     position: fixed;
-    width: 200px;
+    width: 230px;
     height: 100%;
     margin-top: 70px;
     padding-top: 30px;
@@ -80,6 +80,35 @@ header {
 /* FORM */
 main {
     padding-top: 80px;
-    padding-left: 220px;
+    padding-left: 230px;
+    min-height: 100vh;
+}
+main form {
+    padding: 20px;
 }
 
+form nav {
+    padding-bottom: 10px;
+}
+
+form div {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0px;
+}
+
+form div input, form textarea {
+    outline: unset;
+    padding: 7px;
+    width: 400px;
+    border: 1px solid #132835;
+    border-radius: 4px;
+}
+
+footer {
+    padding: 30px 0px 30px 230px;
+    background-color: #132835;
+    text-align: center;
+    color: #FFF;
+    
+}
