@@ -112,3 +112,17 @@ footer {
     color: #FFF;
     
 }
+
+#pdf {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+#pdf .image{
+    
+        width: 200px;
+        height: 200px;
+        border-radius: 100px;
+   
+}
