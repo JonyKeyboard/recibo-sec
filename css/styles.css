@@ -7,7 +7,7 @@ html {
     min-height: 100vh;
 }
 
-/* NAVBAR */
+/* NAVBAR PRINCIPAL */
 header {
     position: fixed;
     background-color: #132835;
@@ -41,7 +41,7 @@ header {
     color: #4a9fcf;
 }
 
-/* SIDEBAR */
+/* NAVEGAÇÃO LATERAL */
 .sidebar {
     position: fixed;
     width: 230px;
@@ -77,52 +77,74 @@ header {
     background-color: #51B3EC;
 }
 
-/* FORM */
+/* ÁREA DO CONTEÚDO */
 main {
     padding-top: 80px;
     padding-left: 230px;
     min-height: 100vh;
+    background-color: #CCC;
 }
-main form {
+/* FORMULÁRIO */
+#contact-form {
     padding: 20px;
+    max-width: 90%;
+    margin: 0 auto;
+    
 }
 
-form nav {
+/* NAVEGAÇÃO DO FORMULÁRIO */
+#contact-form nav {
     padding-bottom: 10px;
+    background-color: #CCC;
+} 
+    
+/* CONTEÚDO DO FORMULÁRIO */
+#form-main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #DDD;
 }
 
-form div {
+.form-item-left {
     display: flex;
     flex-direction: column;
-    padding: 10px 0px;
+    width: 60%;
 }
 
-form div input, form textarea {
+.form-item-right {
+    width: 40%;
+}
+
+ 
+#form-main textarea {
+    padding: 10px;
+    border: 1px solid #132835;
+    border-radius: 4px;
+    height: 150px;
+    width: 70%;
+}
+
+#form-main input {
+    padding: 10px;
+    border: 1px solid #132835;
+    border-radius: 4px;
+    width: 90%;
+    margin-left: auto;
+}
+
+/*form div input, form textarea {
     outline: unset;
     padding: 7px;
     width: 400px;
     border: 1px solid #132835;
     border-radius: 4px;
-}
-
+}*/
+/*RODAPÉ*/
 footer {
     padding: 30px 0px 30px 230px;
     background-color: #132835;
     text-align: center;
     color: #FFF;
-    
-}
-
-#pdf {
-    display: flex;
-    text-align: center;
-    align-items: center;
-}
-
-#pdf .image{
-    
-        width: 200px;
-        height: 200px;
-        border-radius: 100px;
-   
 }
