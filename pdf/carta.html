@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>area pdf</title>
    
     <style>
         html {
@@ -12,14 +12,22 @@
             padding: 0;
         }
 
+        /*CABECALHO*/
         header {
             text-align: center;
         }
 
-        header img{
+        header img {
             width: 100%; 
         }
-      
+
+        /*CONTEÚDO*/
+        #content-carta {
+            text-align: center;
+            background-color: tomato;
+        }
+
+        /*RODAPÉ*/
         footer {
             position: absolute;
             width: 100%;
@@ -33,12 +41,16 @@
 
 <body>
     <header>
-        <img src="img/timbrado-topo.jpg" alt="">
+        <img src="timbrado-topo.jpg" alt="">
     </header>
+
+    <section id="content-carta">
+        <h1>CONTEÚDO</h1>
+    </section>    
 
 
     <footer>
-        <img src="img/timbrado-rodapé.jpg" alt="">
+        <img src="timbrado-rodape.jpg" alt="">
     </footer>    
 </body>
 </html>
