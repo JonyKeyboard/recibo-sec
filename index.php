@@ -1,36 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMEAD-CGPB</title>
-    <link rel="stylesheet" href="/css/styles.css">
-</head>
-<body>
-    <!--header começo-->
-    <header>
-        <div class="logo">
-            <h3>Comead-<span>Sec</span></h3>
-        </div>
-        <div class="right">
-            <a href="#" class="btn-sair">Sair</a>
-        </div>
-    </header>
-    <!--header final-->
-    <!--sidebar começo-->
-    <div class="sidebar">
-        <center>
-            <img src="/img/comead.jpg" class="image" alt="">
-            <h2>Secretaria</h2>
-        </center>
-        <a href="#"><span>Cadastro Geral</span></a>
-        <a href="#"><span>Igrejas</span></a>
-        <a href="#"><span>Secretaria</span></a>
-        <a href="#"><span>Configurações</span></a>
-    </div>
-    <!--sidebar final-->
-    <!-- conteúdo -->
+<?php
+    include_once("templates/header.php");
+?>
+    <!-- área conteúdo -->
     <main>
         <form id="contact-form">
             <nav>
@@ -59,12 +30,28 @@
                 </div>
             </div>
         </form>
+       
+
+     <!-- listagem -->
+     <table border="1" id="search-container">
+        <?php foreach($obreiros as $obreiro):?>
+            <tr>
+                <td><?= $obreiro['nome'] ?></td>
+                <td><?= $obreiro['comead'] ?></td>
+                <td><?= $obreiro['cargo'] ?></td>
+            </tr>
+        <?php endforeach; ?>
+          
+
+        </table>
+    <!-- fim da listagem -->
+
+
     </main>
-    <!-- fim do conteúdo -->
-    
-    <footer>
-        <p>Stanley &copy; 2022</p>
-    </footer>
-    
-</body>
-</html>
+    <!-- fim área conteúdo -->
+
+   
+   
+<?php
+    include_once("templates/footer.php");
+?>

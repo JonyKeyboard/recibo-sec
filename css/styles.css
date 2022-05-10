@@ -110,20 +110,21 @@ main {
 .form-item-left {
     display: flex;
     flex-direction: column;
-    width: 60%;
+    width: 50%;
 }
 
 .form-item-right {
+    padding-left: 50px;
     width: 40%;
 }
 
  
 #form-main textarea {
-    padding: 10px;
+    
     border: 1px solid #132835;
     border-radius: 4px;
     height: 150px;
-    width: 70%;
+    width: 80%;
 }
 
 #form-main input {
