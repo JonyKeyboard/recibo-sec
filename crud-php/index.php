@@ -22,21 +22,9 @@
         <hr>
         <div class="row">
             <div class="col-lg-12">
-                <div class="table-responsive">
-                    <table class="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                                <th>E-mail</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
+                
+                <span class="listar-usuarios"></span>
+                        
             </div>
         </div>
     </div>
