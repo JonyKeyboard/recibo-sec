@@ -1,5 +1,12 @@
 <?php
-  require_once("template/header.php")
+  require_once("template/header.php");
+
+  require_once("dao/receiptDAO.php");
+  
+
+  $receiptDao = new receiptDAO($conn);
+
+
 ?>
 <section class="content">
     <div class="container-fluid">
@@ -15,7 +22,7 @@
             <div class="card-body">
                 <div class="row">
                     
-                        
+                    <?php var_dump($receiptDao->findAll()); ?>
                         
                 </div>
             </div>
