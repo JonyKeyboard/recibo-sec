@@ -12,6 +12,7 @@
 
     interface ReceiptDAOInterface {
 
+        public function buildReceipt($data);
         public function findAll();
         public function findById($id);
         public function create(Receipt $receipt);

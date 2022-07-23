@@ -11,42 +11,43 @@
                     <a href="<?= $BASE_URL ?>receipt.php" class="btn btn-primary sub-header-btn">Voltar</a>
                 </div>
             </div>
-            <form action="">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label>Sacado</label>
-                                    <input class="form-control" type="text" placeholder="Digite o nome">
+            <form action="<?= $BASE_URL ?>receipt_process.php" id="add-receipt-form" method="POST">
+                <input type="hidden" name="type" value="create">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Sacado</label>
+                                        <input type="text" class="form-control" name="payer" placeholder="Digite o nome">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Valor</label>
-                                    <input class="form-control" type="number" placeholder="Digite o valor">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Valor</label>
+                                        <input type="number" class="form-control" name="value" placeholder="Digite o valor">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Emissão</label>
-                                    <input class="form-control" type="date">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Emissão</label>
+                                        <input type="date" class="form-control" name="emission">
+                                    </div>
                                 </div>
+                            </div>   
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label>Descrição</label>
+                                <textarea class="form-control" rows="3" id="description"></textarea>
                             </div>
-                        </div>   
-                    </div>
-                    <div class="col-md-5">
-                        <div class="form-group">
-                            <label>Descrição</label>
-                            <textarea class="form-control" rows="3" placeholder=""></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-primary receipt-btn" value="Gerar recibo">   
                         </div>
                     </div>
-                    <div class="col-md-12">
-                        <input type="submit" class="btn btn-primary receipt-btn" value="Gerar recibo">   
-                    </div>
                 </div>
-            </div>
             </form>
             <div class="card-footer">
                 <br>

@@ -49,6 +49,18 @@
         }
         public function create(Receipt $receipt){
 
+            $stmt = $this->conn->prepare("INSERT INTO receipts (payer, value, emission, description
+            ) VALUES (
+                :payer, :value, :emission, :description
+            )");
+
+            $stmt->bindParam(":payer", $receipt->payer);
+            $stmt->bindParam(":value", $receipt->value);
+            $stmt->bindParam(":emission", $receipt->emission);
+            $stmt->bindParam(":description", $receipt->description);
+            
+            $stmt->execute();
+
         }
         public function update(Receipt $receipt){
 
