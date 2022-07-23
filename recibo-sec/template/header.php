@@ -1,3 +1,6 @@
+<?php 
+  require_once("globals.php");
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
