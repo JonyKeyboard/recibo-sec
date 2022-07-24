@@ -2,7 +2,7 @@
 
     require_once("models/Receipt.php");
 
-    class receiptDAO implements ReceiptDAOInterface{
+    class ReceiptDAO implements ReceiptDAOInterface{
 
         private $conn;
 

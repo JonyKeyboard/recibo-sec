@@ -3,9 +3,12 @@
 require_once("globals.php");
 require_once("db.php");
 require_once("models/Receipt.php");
+require_once("models/Message.php");
 require_once("dao/receiptDAO.php");
 
-$receiptDao = new receiptDAO($conn);
+$message = new Message($BASE_URL);
+
+$receiptDao = new ReceiptDAO($conn);
 
 // Regate do tipo de formulário
 $type = filter_input(INPUT_POST, "type");
@@ -30,5 +33,7 @@ if($type === "create"){
 
         $receiptDao->create($receipt);
     
+    } else {
+        $message->setMessage("Sacado, Valor e Emissão devem estar preenchidos", "danger", "back");
     }
 }

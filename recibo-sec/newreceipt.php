@@ -26,13 +26,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Valor</label>
-                                        <input type="number" class="form-control" name="value" placeholder="Digite o valor">
+                                        <input type="number" class="form-control" name="value" step="0.01" placeholder="Digite o valor">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Emissão</label>
-                                        <input type="date" class="form-control" name="emission">
+                                        <input type="date" class="form-control" name="emission" value="<?= date("Y-m-d"); ?>">
                                     </div>
                                 </div>
                             </div>   
@@ -40,7 +40,7 @@
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label>Descrição</label>
-                                <textarea class="form-control" rows="3" id="description"></textarea>
+                                <textarea class="form-control" rows="3" name="description"></textarea>
                             </div>
                         </div>
                         <div class="col-md-12">

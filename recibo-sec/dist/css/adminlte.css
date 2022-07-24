@@ -34998,7 +34998,7 @@ a.close.disabled, a.disabled.mailbox-attachment-close {
 
 .login-box .card,
 .register-box .card {
-  margin-bottom: 0;
+  margin-bottom: 150px;
 }
 
 .login-card-body,
