@@ -15,7 +15,6 @@
             $this->message = new Message($url);
         }
 
-
         public function buildUser($data){
 
             $user = new User();
@@ -30,6 +29,7 @@
             return $user;
 
         }
+
         public function create(User $user) {
 
             $stmt = $this->conn->prepare("INSERT INTO users(name, email, password) 
@@ -42,6 +42,7 @@
             $stmt->execute();
 
         }
+
         public function update(User $user, $redirect = true){
 
             $stmt = $this->conn->prepare("UPDATE users SET 
@@ -65,9 +66,27 @@
             }
             
         }
+
         public function verifyToken($protected = false){
+
+            if(!empty($_SESSION["token"])) {
+                
+                $token = $_SESSION["token"];
+
+                $user = $this->findByToken($token);
+
+                if($user) {
+                    return $user;
+                } else if($protected) {
+                    $this->message->setMessage("","danger", "auth.php");
+                }
+
+            } else if($protected) {
+                $this->message->setMessage("","danger", "auth.php");
+            }
             
         }
+
         public function setTokenToSession($token, $redirect = true){
             
             $_SESSION["token"] = $token;
@@ -76,6 +95,7 @@
                 $this->message->setMessage("Seja bem-vindo!","success", "dashboard.php");
             }
         }
+
         public function authenticateUser($email, $password){
            
             $user = $this->findByEmail($email);
@@ -105,6 +125,7 @@
             }   
 
         }
+
         public function findAll(){
 
             $users = [];
@@ -125,6 +146,7 @@
             return $users;
 
         }
+
         public function findByEmail($email) {
             
             if($email != "") {
@@ -151,6 +173,7 @@
             }
 
         }
+
         public function findById($id){
 
             if($id != "") {
@@ -177,12 +200,40 @@
             }
             
         }
+
         public function findByToken($token){
             
+            if($token != "") {
+                
+                $stmt = $this->conn->prepare("SELECT * FROM users WHERE token = :token");
+
+                $stmt->bindParam(":token", $token);
+
+                $stmt->execute();
+
+                if($stmt->rowCount() > 0){
+                    
+                    $data = $stmt->fetch();
+                    $user = $this->buildUser($data);
+
+                    return $user;
+
+                } else {
+                    return false;
+                }
+
+            } else {
+                return false;
+            }
         }
+
         public function destroyToken(){
             
+            $_SESSION["token"] = "";
+
+            $this->message->setMessage("Você fez logout com sucesso!", "success", "auth.php");
         }
+
         public function changePassword(User $user){
             
         }

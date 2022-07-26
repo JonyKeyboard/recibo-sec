@@ -2,6 +2,7 @@
   require_once("globals.php");
   require_once("db.php");
   require_once("models/Message.php");
+  require_once("dao/UserDAO.php");
 
 $message = new Message($BASE_URL);
 
@@ -10,6 +11,10 @@ $flassMessage = $message->getMessage();
 if(!empty($flassMessage["msg"])){
   $message->clearMessage();
 }
+
+$userDao = new UserDAO($conn, $BASE_URL);
+
+$userData = $userDao->verifyToken(false);
   
 ?>
 <!DOCTYPE html>
@@ -36,6 +41,13 @@ if(!empty($flassMessage["msg"])){
   <div class="card">
     <div class="card-body login-card-body">
       <p class="login-box-msg">Autenticação de Usuário</p>
+
+
+      <?php if(!empty($flassMessage["msg"])): ?>
+          <div class="alert alert-<?= $flassMessage["type"] ?> alert-dismissible fade show" role="alert">
+            <?= $flassMessage["msg"] ?>
+          </div>
+        <?php endif; ?>
 
       <form action="<?= $BASE_URL ?>auth_process.php" method="POST">
         <input type="hidden" name="type" value="login">

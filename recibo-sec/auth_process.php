@@ -23,7 +23,7 @@ if($type === "login") {
     
     } else {
 
-        $message->setMessage("Usuário e/ou senha incorretos.", "danger", "back");
+        $message->setMessage("Email e/ou senha incorreto(a).", "danger", "back");
 
     }
 
