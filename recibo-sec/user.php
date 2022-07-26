@@ -4,7 +4,7 @@
   require_once("dao/UserDAO.php");
   
 
-  $userDAO = new UserDAO($conn, $BASE_URL);
+  $userDao = new UserDAO($conn, $BASE_URL);
 
 
 ?>
