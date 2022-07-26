@@ -1,10 +1,10 @@
 <?php
   require_once("template/header.php");
 
-  require_once("dao/receiptDAO.php");
+  require_once("dao/UserDAO.php");
   
 
-  $receiptDao = new receiptDAO($conn);
+  $userDAO = new UserDAO($conn, $BASE_URL);
 
 
 ?>
@@ -13,16 +13,16 @@
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Recibos gerados</h3>
+                <h3 class="card-title">Usuários cadastrados</h3>
                 <div class="card-tools">
-                    <a href="<?= $BASE_URL ?>newreceipt.php" class="btn btn-primary sub-header-btn">Novo recibo</a>
+                    <a href="<?= $BASE_URL ?>newuser.php" class="btn btn-primary sub-header-btn">Novo usuário</a>
                 </div>
             </div>
             <form action="">
             <div class="card-body">
                 <div class="row">
                     
-                    <?php var_dump($receiptDao->findAll()); ?>
+                    <?php var_dump($userDao->findAll()); ?>
                         
                 </div>
             </div>

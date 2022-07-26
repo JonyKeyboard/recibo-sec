@@ -6,45 +6,46 @@
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Gerador de Recibos</h3>
+                <h3 class="card-title">Cadastro de usuário</h3>
                 <div class="card-tools">
-                    <a href="<?= $BASE_URL ?>receipt.php" class="btn btn-primary sub-header-btn">Voltar</a>
+                    <a href="<?= $BASE_URL ?>user.php" class="btn btn-primary sub-header-btn">Voltar</a>
                 </div>
             </div>
-            <form action="<?= $BASE_URL ?>receipt_process.php" id="add-receipt-form" method="POST">
-                <input type="hidden" name="type" value="create">
+            <form action="<?= $BASE_URL ?>user_process.php" method="POST">
+                <input type="hidden" name="type" value="register">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-7">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Sacado</label>
-                                        <input type="text" class="form-control" name="payer" placeholder="Digite o nome">
+                                        <label>Nome</label>
+                                        <input type="text" class="form-control" name="name" placeholder="Digite o nome">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" class="form-control" name="email" placeholder="Digite o email">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Valor</label>
-                                        <input type="number" class="form-control" name="value" step="0.01" placeholder="Digite o valor">
+                                        <label>Senha</label>
+                                        <input type="password" class="form-control" name="password" placeholder="Digite a senha">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Emissão</label>
-                                        <input type="date" class="form-control" name="emission" value="<?= date("Y-m-d"); ?>">
+                                        <label>Confirmação de senha</label>
+                                        <input type="password" class="form-control" name="confirmpassword" placeholder="Confirme a senha">
                                     </div>
                                 </div>
+                                
                             </div>   
                         </div>
-                        <div class="col-md-5">
-                            <div class="form-group">
-                                <label>Descrição</label>
-                                <textarea class="form-control" rows="3" name="description"></textarea>
-                            </div>
-                        </div>
                         <div class="col-md-12">
-                            <input type="submit" class="btn btn-primary myforms-btn" value="Gerar recibo">   
+                            <input type="submit" class="btn btn-primary myforms-btn" value="Cadastrar usuário">   
                         </div>
                     </div>
                 </div>

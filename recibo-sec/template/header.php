@@ -130,6 +130,14 @@ if(!empty($flassMessage["msg"])){
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="user.php" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                Usuários
+              </p>
+            </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

@@ -23,7 +23,7 @@
     <div class="card-body login-card-body">
       <p class="login-box-msg">Autenticação de Usuário</p>
 
-      <form action="" method="post">
+      <form action="<?= $BASE_URL ?>/auth_process.php" method="POST">
         <div class="input-group mb-3">
           <input type="email" class="form-control" placeholder="Email">
           <div class="input-group-append">
@@ -42,7 +42,7 @@
         </div>
         <div class="row">
           <div class="col-6">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
           </div>
         </div>
       </form>

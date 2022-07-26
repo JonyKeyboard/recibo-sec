@@ -32,6 +32,10 @@ if($type === "create"){
         $receipt->description = $description;
 
         $receiptDao->create($receipt);
+
+        // GERAR UM PDF E VOLTAR PARA A PÁGINA DE LISTAGEM DE RECIBO
+
+        $message->setMessage("Recibo gerado com sucesso", "success", "receipt.php");
     
     } else {
         $message->setMessage("Sacado, Valor e Emissão devem estar preenchidos", "danger", "back");
