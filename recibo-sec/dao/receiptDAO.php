@@ -46,6 +46,43 @@
         }
         public function findById($id){
 
+            if($id != "") {
+                
+                $stmt = $this->conn->prepare("SELECT * FROM receipts WHERE id = :id");
+
+                $stmt->bindParam(":id", $id);
+
+                $stmt->execute();
+
+                if($stmt->rowCount() > 0){
+                    
+                    $data = $stmt->fetch();
+                    $user = $this->buildReceipt($data);
+
+                    return $user;
+
+                } else {
+                    return false;
+                }
+
+            } else {
+                return false;
+            }
+
+        }
+        public function findLastReceipt(){
+
+            $stmt = $this->conn->prepare("SELECT * FROM receipts ORDER BY id DESC LIMIT 1");
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            $data = $stmt->fetch();
+            $user = $this->buildReceipt($data);
+
+            return $user;
+
         }
         public function create(Receipt $receipt){
 
