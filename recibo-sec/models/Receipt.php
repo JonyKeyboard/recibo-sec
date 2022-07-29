@@ -7,6 +7,7 @@
         public $value;
         public $emission;
         public $description;
+        public $users_id;
 
     }
 

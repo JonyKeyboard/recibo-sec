@@ -25,6 +25,7 @@
             $user->password = $data["password"];
             $user->image = $data["image"];
             $user->token = $data["token"];
+            $user->access_level = $data["access_level"];
 
             return $user;
 
@@ -32,12 +33,13 @@
 
         public function create(User $user) {
 
-            $stmt = $this->conn->prepare("INSERT INTO users(name, email, password) 
-            VALUES (:name, :email, :password)");
+            $stmt = $this->conn->prepare("INSERT INTO users(name, email, password, access_level) 
+            VALUES (:name, :email, :password, :access_level)");
 
             $stmt->bindParam(":name", $user->name);
             $stmt->bindParam(":email", $user->email);
             $stmt->bindParam(":password", $user->password);
+            $stmt->bindParam(":access_level", $user->access_level);
 
             $stmt->execute();
 
@@ -49,7 +51,8 @@
                 name = :name,
                 email = :email,
                 image = :image,
-                token = :token
+                token = :token,
+                access_level = :access_level
                 WHERE id = :id
             ");
 
@@ -57,6 +60,7 @@
             $stmt->bindParam(":email", $user->email);
             $stmt->bindParam(":image", $user->image);
             $stmt->bindParam(":token", $user->token);
+            $stmt->bindParam(":access_level", $user->access_level);
             $stmt->bindParam(":id", $user->id);
 
             $stmt->execute();

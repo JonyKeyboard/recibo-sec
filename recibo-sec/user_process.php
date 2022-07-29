@@ -17,8 +17,9 @@ if($type === "register"){
     $email = filter_input(INPUT_POST, "email");
     $password = filter_input(INPUT_POST, "password");
     $confirmpassword = filter_input(INPUT_POST, "confirmpassword");
+    $access_level = filter_input(INPUT_POST, "access_level");
 
-    if($name && $email && $password){
+    if($name && $email && $password && $access_level){
 
         if($password === $confirmpassword) {
 
@@ -30,6 +31,7 @@ if($type === "register"){
                 $user->name = $name;
                 $user->email = $email;
                 $user->password = $finalPassword;
+                $user->access_level = $access_level;
 
                 $userDao->create($user);
 

@@ -24,6 +24,7 @@
             $receipt->value = $data["value"];
             $receipt->emission = $data["emission"];
             $receipt->description = $data["description"];
+            $receipt->users_id = $data["users_id"];
 
             return $receipt;
 
@@ -78,15 +79,16 @@
    
         public function create(Receipt $receipt){
 
-            $stmt = $this->conn->prepare("INSERT INTO receipts (payer, value, emission, description
+            $stmt = $this->conn->prepare("INSERT INTO receipts (payer, value, emission, description, users_id
             ) VALUES (
-                :payer, :value, :emission, :description
+                :payer, :value, :emission, :description, :users_id
             )");
 
             $stmt->bindParam(":payer", $receipt->payer);
             $stmt->bindParam(":value", $receipt->value);
             $stmt->bindParam(":emission", $receipt->emission);
             $stmt->bindParam(":description", $receipt->description);
+            $stmt->bindParam(":users_id", $receipt->users_id);
             
             $stmt->execute();
 

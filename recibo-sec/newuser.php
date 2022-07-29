@@ -23,10 +23,23 @@
                                         <input type="text" class="form-control" name="name" placeholder="Digite o nome">
                                     </div>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-7">
                                     <div class="form-group">
                                         <label>Email</label>
                                         <input type="email" class="form-control" name="email" placeholder="Digite o email">
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <label>Nivel de acesso</label>
+                                    <div class="form-group">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="access_level" value="common_user" checked>
+                                            <label class="form-check-label">Usuário comum</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="access_level" value="administrator">
+                                            <label class="form-check-label">Administrador</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
