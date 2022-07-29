@@ -8,7 +8,7 @@ require_once("dao/receiptDAO.php");
 
 $message = new Message($BASE_URL);
 
-$receiptDao = new ReceiptDAO($conn);
+$receiptDao = new ReceiptDAO($conn, $BASE_URL);
 
 // Regate do tipo de formulário
 $type = filter_input(INPUT_POST, "type");
@@ -27,7 +27,7 @@ if($type === "create"){
     if(!empty($payer) && !empty($value) && !empty($emission)) {
 
         $receipt->payer = $payer;
-        $receipt->value = $value;
+        $receipt->value = number_format($value, 2);
         $receipt->emission = $emission;
         $receipt->description = $description;
 
@@ -35,7 +35,7 @@ if($type === "create"){
 
         // GERAR UM PDF E VOLTAR PARA A PÁGINA DE LISTAGEM DE RECIBO
 
-        $message->setMessage("Recibo gerado com sucesso", "success", "receipt.php");
+        //$message->setMessage("Recibo gerado com sucesso", "success", "editreceipt.php?");
     
     } else {
         $message->setMessage("Sacado, Valor e Emissão devem estar preenchidos", "danger", "back");

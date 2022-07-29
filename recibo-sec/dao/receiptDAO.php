@@ -1,13 +1,18 @@
 <?php
 
     require_once("models/Receipt.php");
+    require_once("models/Message.php");
 
     class ReceiptDAO implements ReceiptDAOInterface{
 
         private $conn;
+        private $url;
+        private $message;
 
-        public function __construct(PDO $conn){
+        public function __construct(PDO $conn, $url ){
             $this->conn = $conn;
+            $this->url = $url;
+            $this->message = new Message($url);
         }
 
         public function buildReceipt($data){
@@ -70,20 +75,7 @@
             }
 
         }
-        public function findLastReceipt(){
-
-            $stmt = $this->conn->prepare("SELECT * FROM receipts ORDER BY id DESC LIMIT 1");
-
-            $stmt->bindParam(":id", $id);
-
-            $stmt->execute();
-
-            $data = $stmt->fetch();
-            $user = $this->buildReceipt($data);
-
-            return $user;
-
-        }
+   
         public function create(Receipt $receipt){
 
             $stmt = $this->conn->prepare("INSERT INTO receipts (payer, value, emission, description
@@ -97,6 +89,10 @@
             $stmt->bindParam(":description", $receipt->description);
             
             $stmt->execute();
+
+            $last_id = $this->conn->lastInsertId();
+
+            $this->message->setMessage("Recibo gerado com sucesso!","success", "editreceipt.php?id=". $last_id);
 
         }
         public function update(Receipt $receipt){

@@ -1,18 +1,40 @@
 <?php
-  require_once("template/header.php")
+require_once("template/header.php");
+
+require_once("models/User.php");
+require_once("dao/ReceiptDAO.php");
+
+//$user = new User();
+$userDao = new UserDao($conn, $BASE_URL);
+$userDao->verifyToken(true);
+
+$receiptDao = new ReceiptDAO($conn, $BASE_URL);
+$id = filter_input(INPUT_GET, "id");
+
+if(empty($id)) {
+    $message->setMessage("O recibo não foi encontrado!", "danger", "receipt.php");
+}else{
+    $receiptData = $receiptDao->findById($id);
+
+    if(!$receiptData) {
+        $message->setMessage("O recibo não foi encontrado!", "danger", "receipt.php");
+    }
+} 
+
 ?>
 <section class="content">
     <div class="container-fluid">
         <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Gerador de Recibos</h3>
+                <h3 class="card-title">Editor de Recibos</h3>
                 <div class="card-tools">
+                    <a href="<?= $BASE_URL ?>receiptpdf.php" class="btn btn-secondary sub-header-btn">Imprimir</a>
                     <a href="<?= $BASE_URL ?>receipt.php" class="btn btn-primary sub-header-btn">Voltar</a>
                 </div>
             </div>
             <form action="<?= $BASE_URL ?>receipt_process.php" id="add-receipt-form" method="POST">
-                <input type="hidden" name="type" value="create">
+                <input type="hidden" name="type" value="update">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-7">
@@ -20,19 +42,19 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Sacado</label>
-                                        <input type="text" class="form-control" name="payer" placeholder="Digite o nome">
+                                        <input type="text" class="form-control" name="payer" placeholder="Digite o nome" value="<?= $receiptData->payer ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Valor</label>
-                                        <input type="number" class="form-control" name="value" step="0.01" min="0.01" placeholder="0,00">
+                                        <input type="number" class="form-control" name="value" step="0.01" min="0.01" placeholder="0,00" value="<?= $receiptData->value ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Emissão</label>
-                                        <input type="date" class="form-control" name="emission" value="<?= date("Y-m-d"); ?>">
+                                        <input type="date" class="form-control" name="emission" value="<?= $receiptData->emission ?>">
                                     </div>
                                 </div>
                             </div>   
@@ -44,7 +66,7 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <input type="submit" class="btn btn-primary myforms-btn" value="Gerar recibo">   
+                            <input type="submit" class="btn btn-primary myforms-btn" value="Editar recibo">   
                         </div>
                     </div>
                 </div>

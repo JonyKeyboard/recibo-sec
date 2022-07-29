@@ -4,7 +4,7 @@
   require_once("dao/receiptDAO.php");
   
 
-  $receiptDao = new receiptDAO($conn);
+  $receiptDao = new receiptDAO($conn, $BASE_URL);
 
 
 ?>

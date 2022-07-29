@@ -6,7 +6,7 @@ require_once("dao/ReceiptDAO.php");
 
 $receiptDao = new receiptDAO($conn);
 
-$receipt = $receiptDao->findLastReceipt();
+//$receipt = $receiptDao->findLastReceiptId();
 
 //$userDao = new UserDAO($conn, $BASE_URL); 
 

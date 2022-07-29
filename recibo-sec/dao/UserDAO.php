@@ -231,7 +231,7 @@
             
             $_SESSION["token"] = "";
 
-            $this->message->setMessage("Você fez logout com sucesso!", "success", "auth.php");
+            $this->message->setMessage("Você fez logout com sucesso!", "primary", "auth.php");
         }
 
         public function changePassword(User $user){
