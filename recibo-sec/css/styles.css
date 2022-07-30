@@ -1,8 +1,17 @@
 .myforms-btn {
   margin-top: 20px;
-  width: 20%;
+  width: 170px;
 }
 
 .sub-header-btn {
-  width: 150px;
+  width: 130px;
+}
+
+.actions-column {
+  max-width: 75px;
+  text-align: center;
+}
+
+.actions-column form {
+  display: inline-block;
 }

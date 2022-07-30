@@ -6,7 +6,7 @@ require_once("dao/ReceiptDAO.php");
 
 //$user = new User();
 $userDao = new UserDao($conn, $BASE_URL);
-$userDao->verifyToken(true);
+$userData = $userDao->verifyToken(true);
 
 $receiptDao = new ReceiptDAO($conn, $BASE_URL);
 $id = filter_input(INPUT_GET, "id");
@@ -72,7 +72,7 @@ if(empty($id)) {
                 </div>
             </form>
             <div class="card-footer">
-                <br>
+                <div class="float-right">Usuário responsável: <?= $userData->name ?></div>
             </div>
         </div>
     </div>

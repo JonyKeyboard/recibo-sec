@@ -61,4 +61,8 @@ if($type === "create"){
         $message->setMessage("Sacado, Valor e Emissão devem estar preenchidos", "danger", "back");
     }
     
+} else if($type === "delete"){
+
+    echo "FUNFOU";exit;
+
 }

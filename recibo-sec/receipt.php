@@ -3,9 +3,8 @@
 
   require_once("dao/receiptDAO.php");
   
-
   $receiptDao = new receiptDAO($conn, $BASE_URL);
-
+  $receiptsData = $receiptDao->findAll();
 
 ?>
 <section class="content">
@@ -20,11 +19,46 @@
             </div>
             <form action="">
             <div class="card-body">
-                <div class="row">
-                    
-                    <?php var_dump($receiptDao->findAll()); ?>
-                        
-                </div>
+    
+                <table id="my_datatables" class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Sacado</th>
+                            <th>Valor</th>
+                            <th>Emissão</th>
+                            <th>Ação</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php foreach($receiptsData as $receipt): ?>
+                        <tr>
+                            <td><?= $receipt->payer ?></td>
+                            <td><?= $receipt->value ?></td>
+                            <td><?= $receipt->emission ?></td>
+                            <td class="actions-column">
+                                <a class="btn btn-primary btn-sm" href="<?= $BASE_URL ?>editreceipt.php?id=<?= $receipt->id ?>">
+                                    Editar
+                                </a>
+                                <form action="<?= $BASE_URL ?>receipt_process.php" method="POST">
+                                    <input type="hidden" name="type" value="delete">
+                                    <input type="hidden" name="id" value="<?= $receipt->id ?>">
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Deletar">
+                                </form>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Sacado</th>
+                            <th>Valor</th>
+                            <th>Emissão</th>
+                            <th>Ação</th>
+                        </tr>
+                    </tfoot>
+                </table>
+               
             </div>
             </form>
             <div class="card-footer">

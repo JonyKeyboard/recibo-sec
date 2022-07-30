@@ -18,15 +18,61 @@
                     <a href="<?= $BASE_URL ?>newuser.php" class="btn btn-primary sub-header-btn">Novo usuário</a>
                 </div>
             </div>
-            <form action="">
+            
             <div class="card-body">
-                <div class="row">
-                    
-                    <?php var_dump($userDao->findAll()); ?>
-                        
-                </div>
+                                    
+                <?php var_dump($userDao->findAll()); ?>
+                <table id="my_datatables" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Trident</td>
+                            <td>Internet
+                            Explorer 4.0
+                            </td>
+                            <td>Win 95+</td>
+                            <td> 4</td>
+                            <td>X</td>
+                        </tr>
+                        <tr>
+                            <td>Trident</td>
+                            <td>Internet
+                            Explorer 5.0
+                            </td>
+                            <td>Win 95+</td>
+                            <td>5</td>
+                            <td>C</td>
+                        </tr>
+                        <tr>
+                            <td>Trident</td>
+                            <td>Internet
+                            Explorer 5.5
+                            </td>
+                            <td>Win 95+</td>
+                            <td>5.5</td>
+                            <td>A</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                        </tr>
+                    </tfoot>
+                </table>
+                
             </div>
-            </form>
             <div class="card-footer">
                 <br>
             </div>
@@ -38,3 +84,4 @@
 <?php
   require_once("template/footer.php")
 ?>
+
