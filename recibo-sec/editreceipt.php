@@ -50,7 +50,7 @@ if(empty($id)) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Valor</label>
-                                        <input type="text" class="form-control" id="money" name="value" step="0.01" min="0.01" placeholder="0,00" value="<?= $receiptData->value ?>">
+                                        <input type="text" class="form-control valor" name="value" placeholder="0,00" value="<?= $receiptData->value ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

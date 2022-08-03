@@ -21,7 +21,7 @@
 
             $receipt->id = $data["id"];
             $receipt->payer  = $data["payer"];
-            $receipt->value = $data["value"];
+            $receipt->value = number_format($data["value"], 2, ",", ".");
             $receipt->emission = $data["emission"];
             $receipt->description = $data["description"];
             $receipt->users_id = $data["users_id"];

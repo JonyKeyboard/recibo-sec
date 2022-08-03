@@ -28,7 +28,7 @@ if($type === "create"){
     if(!empty($payer) && !empty($value) && !empty($emission)) {
 
         $receipt->payer = $payer;
-        $receipt->value = number_format($value, 2);
+        $receipt->value = floatval(str_replace(',', '.', str_replace('.', '', $value)));
         $receipt->emission = $emission;
         $receipt->description = $description;
         $receipt->users_id = $userData->id;
@@ -43,8 +43,6 @@ if($type === "create"){
 
     $payer = filter_input(INPUT_POST, "payer");
     $value = filter_input(INPUT_POST, "value");
-/////////////////////////////////////////////////////////////////////
-    //var_dump($value);exit;
     $emission = filter_input(INPUT_POST, "emission");
     $description = filter_input(INPUT_POST, "description");
     $users_id = filter_input(INPUT_POST, "users_id");
@@ -55,7 +53,7 @@ if($type === "create"){
     if(!empty($payer) && !empty($value) && !empty($emission)) {
 
         $receipt->payer = $payer;
-        $receipt->value = number_format($value, 2);
+        $receipt->value = floatval(str_replace(',', '.', str_replace('.', '', $value)));
         $receipt->emission = $emission;
         $receipt->description = $description;
         $receipt->users_id = $users_id;    

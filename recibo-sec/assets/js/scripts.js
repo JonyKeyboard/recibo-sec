@@ -1,21 +1,6 @@
-$(document).ready(
-    
-    function(){
-    //cep: 00.000-000
-    $('#m').mask('#00,00', {reverse: true})}); 
 
-    $(function(){
-        $("#money").maskMoney({
-           prefix: 'R$ ',
-           allowNegative: true,
-           thousands: '.',
-           decimal: ',',
-        });
-        
 
-});
-
-$(function(){
+$(document).ready(function(){
 
     String.prototype.trim = function () {
         return this.replace(/\s/g, "");
@@ -29,96 +14,7 @@ $(function(){
     $('.fone').mask("(00) 00000-0000", {placeholder: "(__) _____-_____"});
     $(".valor").maskMoney({prefix:'', allowNegative: true, thousands:'.', decimal:',', precision:2, affixesStay: false});
 
-    $('input[type="checkbox"], input[type="radio"]').iCheck({
-        checkboxClass: 'icheckbox_flat-blue',
-        radioClass : 'iradio_flat-blue',
-    });
-
-    $('[data-toggle="tooltip"],[data-toggle="modal"]').tooltip();
-
-    bootbox.setLocale('br');
-
-    $('.close-callout').click(function(){
-        $('.callout-danger').hide(); 
-    });
-
-    //WEBSERVICE CEP
-    $("body").on("keyup", "#cep", function(e) {
-        if($(this).attr('readonly') == "readonly"){
-            return;
-        }
-        if(this.value.length == 9){
-            ChangeCEP(this.value);
-        }
-    });
-
 });
-
-function ChangeCEP(cep){
-    cep = cep.replace('-','');
-    if(cep.length != 8){
-        return;
-    }
-    $('.spin-loading').show();
-    $.ajax({
-        method: "GET",
-        url: "https://viacep.com.br/ws/"+cep+"/json/",
-        cache: false,
-        success: function (data) {
-            $('#rua').val(data.logradouro); 
-            $('#bairro').val(data.bairro); 
-            $('#cidade').val(data.localidade);
-            $('#uf').val(data.uf).change();
-            $('#numero').focus();
-            $('.spin-loading').hide();
-        }
-    }).fail(function (jqXHR, textStatus, error) {
-        $('.spin-loading').hide();
-    });
-}
-
-function now(){
-    var today = new Date();
-    var dd    = today.getDate();
-    var mm    = today.getMonth()+1;
-    var yyyy  = today.getFullYear();
-    if(dd < 10) {
-        dd = '0'+dd;
-    } 
-    if(mm < 10) {
-        mm = '0'+mm;
-    } 
-    return  dd + '/' + mm + '/' + yyyy;
-}
-
-function FloatToStr(valor) {
-    var n = false;
-    if(valor == 0){
-        return '0,00';
-    }
-    valor = parseFloat(valor);
-    if(valor < 0){
-        n     = true;
-        valor = Math.abs(valor);
-    }
-    valor = valor.toFixed(2).split('.');
-    valor[0]  = valor[0].split(/(?=(?:...)*$)/).join('.');
-    return n ? '-'+valor.join(',') : valor.join(',');
-}
-
-function StrToFloat(valor) {
-    if(valor == ''){
-        return 0.00;
-    }
-    valor = valor.toString().replace('.','');
-    valor = valor.replace(',','.');
-    valor = parseFloat(valor);
-    if (valor === NaN){
-        return 0.00;
-    }else{
-        return valor;
-    }
-}
 
 function ValidaCPF(cpf) {
 
@@ -216,19 +112,6 @@ function ValidaCNPJ(cnpj) {
 
     return true;
 
-}
-
-function ValidaSenha(senha){
-    var regex = /^(?=(?:.*?[A-Z]){1})(?=(?:.*?[0-9]){1})(?!.*\s)[0-9a-zA-Z!@#$%;*(){}_+^&]*$/; 
-    if(senha.length < 8)
-    {
-        return false;
-    }
-    else if(!regex.exec(senha))
-    {
-        return false;
-    }
-    return true;
 }
 
 //GERADOR DE SENHAS

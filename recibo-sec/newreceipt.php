@@ -26,7 +26,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Valor</label>
-                                        <input type="number" class="form-control" name="value" step="0.01" min="0.01" placeholder="0,00">
+                                        <input type="text" class="form-control valor" name="value" step="0.01" min="0.01" placeholder="0,00">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
