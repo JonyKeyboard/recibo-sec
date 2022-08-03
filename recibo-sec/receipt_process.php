@@ -43,8 +43,12 @@ if($type === "create"){
 
     $payer = filter_input(INPUT_POST, "payer");
     $value = filter_input(INPUT_POST, "value");
+/////////////////////////////////////////////////////////////////////
+    //var_dump($value);exit;
     $emission = filter_input(INPUT_POST, "emission");
     $description = filter_input(INPUT_POST, "description");
+    $users_id = filter_input(INPUT_POST, "users_id");
+    $id = filter_input(INPUT_POST, "id");
     
     $receipt = new Receipt();
 
@@ -54,8 +58,9 @@ if($type === "create"){
         $receipt->value = number_format($value, 2);
         $receipt->emission = $emission;
         $receipt->description = $description;
-
-        $receiptDao->create($receipt);
+        $receipt->users_id = $users_id;    
+        $receipt->id = $id;    
+        $receiptDao->update($receipt);
     
     } else {
         $message->setMessage("Sacado, Valor e Emissão devem estar preenchidos", "danger", "back");

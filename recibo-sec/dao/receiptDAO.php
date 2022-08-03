@@ -99,6 +99,25 @@
         }
         public function update(Receipt $receipt){
 
+            $stmt = $this->conn->prepare("UPDATE receipts SET 
+                payer = :payer, 
+                value = :value, 
+                emission = :emission, 
+                description = :description, 
+                users_id = :users_id
+                WHERE id = :id");
+
+            $stmt->bindParam(":payer", $receipt->payer);
+            $stmt->bindParam(":value", $receipt->value);
+            $stmt->bindParam(":emission", $receipt->emission);
+            $stmt->bindParam(":description", $receipt->description);
+            $stmt->bindParam(":users_id", $receipt->users_id);
+            $stmt->bindParam(":id", $receipt->id);
+            
+            $stmt->execute();
+
+            $this->message->setMessage("Recibo alterado com sucesso!","success", "editreceipt.php?id=". $receipt->id);
+
         }
         public function destroy($id){
 

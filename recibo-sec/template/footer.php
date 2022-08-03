@@ -11,8 +11,14 @@
   <!-- /.control-sidebar -->
 </div>
 
+
+
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
+<!-- jQuery Masks -->
+<script src="assets/js/jquery.mask.min.js"></script>
+<script src="assets/js/maskmoney.min.js"></script>
+<script src="assets/js/scripts.js"></script>
 <!-- jQuery UI 1.11.4 -->
 <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -25,6 +31,9 @@
 <script src="plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <script src="plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+
+
+
 
 <script>
   $(function () {

@@ -35,6 +35,8 @@ if(empty($id)) {
             </div>
             <form action="<?= $BASE_URL ?>receipt_process.php" id="add-receipt-form" method="POST">
                 <input type="hidden" name="type" value="update">
+                <input type="hidden" name="users_id" value="<?= $userData->id ?>">
+                <input type="hidden" name="id" value="<?= $receiptData->id ?>">
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-7">
@@ -48,7 +50,7 @@ if(empty($id)) {
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Valor</label>
-                                        <input type="number" class="form-control" name="value" step="0.01" min="0.01" placeholder="0,00" value="<?= $receiptData->value ?>">
+                                        <input type="text" class="form-control" id="money" name="value" step="0.01" min="0.01" placeholder="0,00" value="<?= $receiptData->value ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -62,7 +64,7 @@ if(empty($id)) {
                         <div class="col-md-5">
                             <div class="form-group">
                                 <label>Descrição</label>
-                                <textarea class="form-control" rows="3" name="description"></textarea>
+                                <textarea class="form-control" rows="3" name="description"><?= $receiptData->description ?></textarea>
                             </div>
                         </div>
                         <div class="col-md-12">
