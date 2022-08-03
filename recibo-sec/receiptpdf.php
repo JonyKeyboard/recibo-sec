@@ -4,9 +4,10 @@ require_once("globals.php");
 require_once("db.php");
 require_once("dao/ReceiptDAO.php");
 
-$receiptDao = new receiptDAO($conn);
 
-//$receipt = $receiptDao->findLastReceiptId();
+$id = filter_input(INPUT_GET, "id");
+$receiptDao = new ReceiptDAO($conn, $BASE_URL);
+$receiptData = $receiptDao->findById($id);
 
 //$userDao = new UserDAO($conn, $BASE_URL); 
 
@@ -45,7 +46,13 @@ $pdf->SetFont('times', 'BI', 20);
 $pdf->AddPage();
 
 // set some text to print
-$txt = $receipt->payer;
+//$txt = "Recebi de " + $receiptData->payer + "a importaância de R$ " + $receiptData->value + " referente a " + $receiptData->description;
+$txt = 
+
+// set some text to print
+$txt = <<<EOD
+ Recebi de $receiptData->payer a importaância de R$ $receiptData->value referente a $receiptData->description
+EOD;
 
 // print a block of text using Write()
 $pdf->Write(0, $txt, '', 0, 'C', true, 0, false, false, 0);

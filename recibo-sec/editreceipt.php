@@ -29,7 +29,7 @@ if(empty($id)) {
             <div class="card-header">
                 <h3 class="card-title">Editor de Recibos</h3>
                 <div class="card-tools">
-                    <a href="<?= $BASE_URL ?>receiptpdf.php" class="btn btn-secondary sub-header-btn">Imprimir</a>
+                    <a href="<?= $BASE_URL ?>receiptpdf.php?id=<?= $receiptData->id ?>" class="btn btn-secondary sub-header-btn">Imprimir</a>
                     <a href="<?= $BASE_URL ?>receipt.php" class="btn btn-primary sub-header-btn">Voltar</a>
                 </div>
             </div>
