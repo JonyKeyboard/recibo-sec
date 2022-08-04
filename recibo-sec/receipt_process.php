@@ -19,6 +19,7 @@ $userData = $userDao->verifyToken();
 if($type === "create"){
 
     $payer = filter_input(INPUT_POST, "payer");
+    $cpf = filter_input(INPUT_POST, "cpf");
     $value = filter_input(INPUT_POST, "value");
     $emission = filter_input(INPUT_POST, "emission");
     $description = filter_input(INPUT_POST, "description");
@@ -28,6 +29,7 @@ if($type === "create"){
     if(!empty($payer) && !empty($value) && !empty($emission)) {
 
         $receipt->payer = $payer;
+        $receipt->cpf = preg_replace( '/[^0-9]/is', '', $cpf );
         $receipt->value = floatval(str_replace(',', '.', str_replace('.', '', $value)));
         $receipt->emission = $emission;
         $receipt->description = $description;
@@ -42,6 +44,7 @@ if($type === "create"){
 } else if($type === "update"){
 
     $payer = filter_input(INPUT_POST, "payer");
+    $cpf = filter_input(INPUT_POST, "cpf");
     $value = filter_input(INPUT_POST, "value");
     $emission = filter_input(INPUT_POST, "emission");
     $description = filter_input(INPUT_POST, "description");
@@ -53,6 +56,7 @@ if($type === "create"){
     if(!empty($payer) && !empty($value) && !empty($emission)) {
 
         $receipt->payer = $payer;
+        $receipt->cpf = preg_replace( '/[^0-9]/is', '', $cpf );
         $receipt->value = floatval(str_replace(',', '.', str_replace('.', '', $value)));
         $receipt->emission = $emission;
         $receipt->description = $description;

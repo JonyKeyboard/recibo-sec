@@ -57,8 +57,14 @@ $pdf->Write(0, $lineContent, '', 0, 'C', true, 0, false, false, 0);
 // ------ CABEÇALHO DA CAIXA
 
 // ------ CONTEUDO
+function formatCnpjCpf($value)
+{
+  $vlr_cpf = preg_replace("/\D/", '', $value);
+  return preg_replace("/(\d{3})(\d{3})(\d{3})(\d{2})/", "\$1.\$2.\$3-\$4", $vlr_cpf);
+}
+$cpf = formatCnpjCpf($receiptData->cpf);
 $content = <<<EOD
-Recebi de $receiptData->payer (INSERIR CPF) a importância de R$ $receiptData->value referente a $receiptData->description.
+Recebi de $receiptData->payer ($cpf) a importância de R$ $receiptData->value referente a $receiptData->description.
 EOD;
 $pdf->SetFont('helvetica', '', 13);
 // 1 via

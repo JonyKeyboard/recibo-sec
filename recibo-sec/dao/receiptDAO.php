@@ -21,6 +21,7 @@
 
             $receipt->id = $data["id"];
             $receipt->payer  = $data["payer"];
+            $receipt->cpf  = $data["cpf"];
             $receipt->value = number_format($data["value"], 2, ",", ".");
             $receipt->emission = $data["emission"];
             $receipt->description = $data["description"];
@@ -79,12 +80,13 @@
    
         public function create(Receipt $receipt){
 
-            $stmt = $this->conn->prepare("INSERT INTO receipts (payer, value, emission, description, users_id
+            $stmt = $this->conn->prepare("INSERT INTO receipts (payer, cpf, value, emission, description, users_id
             ) VALUES (
                 :payer, :value, :emission, :description, :users_id
             )");
 
             $stmt->bindParam(":payer", $receipt->payer);
+            $stmt->bindParam(":cpf", $receipt->cpf);
             $stmt->bindParam(":value", $receipt->value);
             $stmt->bindParam(":emission", $receipt->emission);
             $stmt->bindParam(":description", $receipt->description);
@@ -101,6 +103,7 @@
 
             $stmt = $this->conn->prepare("UPDATE receipts SET 
                 payer = :payer, 
+                cpf = :cpf,
                 value = :value, 
                 emission = :emission, 
                 description = :description, 
@@ -108,6 +111,7 @@
                 WHERE id = :id");
 
             $stmt->bindParam(":payer", $receipt->payer);
+            $stmt->bindParam(":cpf", $receipt->cpf);
             $stmt->bindParam(":value", $receipt->value);
             $stmt->bindParam(":emission", $receipt->emission);
             $stmt->bindParam(":description", $receipt->description);

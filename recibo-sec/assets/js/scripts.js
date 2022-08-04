@@ -16,6 +16,18 @@ $(document).ready(function(){
 
 });
 
+$(function () {
+    $('#my_datatables').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": false,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+
 function ValidaCPF(cpf) {
 
     cpf = cpf.replace(/[^\d]+/g,'');

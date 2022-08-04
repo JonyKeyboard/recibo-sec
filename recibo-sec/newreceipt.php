@@ -17,16 +17,22 @@
                     <div class="row">
                         <div class="col-md-7">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Sacado</label>
                                         <input type="text" class="form-control" name="payer" placeholder="Digite o nome">
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Cpf</label>
+                                        <input type="text" class="form-control cpf" name="cpf" placeholder="Digite o cpf">
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Valor</label>
-                                        <input type="text" class="form-control valor" name="value" step="0.01" min="0.01" placeholder="0,00">
+                                        <input type="text" class="form-control valor" name="value" placeholder="0,00">
                                     </div>
                                 </div>
                                 <div class="col-md-6">

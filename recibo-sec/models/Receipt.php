@@ -4,6 +4,7 @@
 
         public $id;
         public $payer;
+        public $cpf;
         public $value;
         public $emission;
         public $description;

@@ -41,10 +41,16 @@ if(empty($id)) {
                     <div class="row">
                         <div class="col-md-7">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Sacado</label>
                                         <input type="text" class="form-control" name="payer" placeholder="Digite o nome" value="<?= $receiptData->payer ?>">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>Cpf</label>
+                                        <input type="text" class="form-control cpf" name="cpf" placeholder="Digite o cpf" value="<?= $receiptData->cpf ?>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
