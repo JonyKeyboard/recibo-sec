@@ -27,7 +27,7 @@ $pdf->setPrintFooter(false);
 $pdf->AddPage();
 
 // ------ CABEÇALHO PRINCIPAL
-$header = "CONVENÇAO DE MINISTROS DA IGREJA EVANGÉLICA ASSEMBLEIA DE DEUS EM CAMPINA GRANDE E NO ESTADO DA PARAIBA";
+$header = "NOME DA EMPRESA";
 $pdf->SetFont('helvetica', 'B', 17);
 // 1 via
 $pdf->setXY(5,15);
@@ -88,7 +88,7 @@ $pdf->Write(0, $finalInfo, '', 0, 'C', true, 0, false, false, 0);
 // ------ ASSINATURA
 $signature = <<<EOD
 ____________________________________
-Secretaria COMEAD-CGPB
+ASSINATURA
 EOD;
 $pdf->SetFont('helvetica', '', 12);
 // 1 via
