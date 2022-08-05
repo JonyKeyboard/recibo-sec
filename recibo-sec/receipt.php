@@ -3,7 +3,7 @@
 
   require_once("dao/receiptDAO.php");
   
-  $receiptDao = new receiptDAO($conn, $BASE_URL);
+  $receiptDao = new ReceiptDAO($conn, $BASE_URL);
   $receiptsData = $receiptDao->findAll();
 
 ?>
@@ -17,7 +17,7 @@
                     <a href="<?= $BASE_URL ?>newreceipt.php" class="btn btn-primary sub-header-btn">Novo recibo</a>
                 </div>
             </div>
-            <form action="">
+            
             <div class="card-body">
     
                 <table id="my_datatables" class="table table-striped table-bordered">
@@ -27,7 +27,6 @@
                             <th>Valor</th>
                             <th>Emissão</th>
                             <th>Ação</th>
-                            
                         </tr>
                     </thead>
                     <tbody>

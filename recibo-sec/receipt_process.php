@@ -11,7 +11,6 @@ $message = new Message($BASE_URL);
 $userDao = new UserDAO($conn, $BASE_URL);
 $receiptDao = new ReceiptDAO($conn, $BASE_URL);
 
-// Regate do tipo de formulário
 $type = filter_input(INPUT_POST, "type");
 
 $userData = $userDao->verifyToken();
@@ -70,6 +69,22 @@ if($type === "create"){
     
 } else if($type === "delete"){
 
-    echo "FUNFOU";exit;
+    $id = filter_input(INPUT_POST, "id");
+
+    $receipt = $receiptDao->findById($id);
+
+    if($receipt) {
+
+        if($receipt->users_id === $userData->id) {
+
+            $receiptDao->destroy($receipt->id);
+
+        } else {
+            $message->setMessage("Recibo criado por outro usuário!", "danger", "back");
+        }
+
+    } else {
+        $message->setMessage("Recibo não encontrado!", "danger", "back");
+    }
 
 }

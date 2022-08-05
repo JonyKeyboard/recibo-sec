@@ -26,7 +26,7 @@ $(function () {
       "autoWidth": false,
       "responsive": true,
     });
-  });
+});
 
 function ValidaCPF(cpf) {
 

@@ -64,9 +64,9 @@
                 if($stmt->rowCount() > 0){
                     
                     $data = $stmt->fetch();
-                    $user = $this->buildReceipt($data);
+                    $receipt = $this->buildReceipt($data);
 
-                    return $user;
+                    return $receipt;
 
                 } else {
                     return false;
@@ -82,7 +82,7 @@
 
             $stmt = $this->conn->prepare("INSERT INTO receipts (payer, cpf, value, emission, description, users_id
             ) VALUES (
-                :payer, :value, :emission, :description, :users_id
+                :payer, :cpf, :value, :emission, :description, :users_id
             )");
 
             $stmt->bindParam(":payer", $receipt->payer);
@@ -124,6 +124,15 @@
 
         }
         public function destroy($id){
+            
+            $stmt = $this->conn->prepare("DELETE FROM receipts WHERE id = :id");
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            // Msg success remove movie
+            $this->message->setMessage("Recibo removido com sucesso!", "success", "receipt.php");
 
         }
 
