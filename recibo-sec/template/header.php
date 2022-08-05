@@ -94,17 +94,24 @@ $userData = $userDao->verifyToken(true);
           </li>
           <li class="nav-item">
             <a href="receipt.php" class="nav-link">
-              <i class="nav-icon far fa-newspaper"></i>
+              <i class="nav-icon fas fa-file-contract"></i>
               <p>
                 Recibos
               </p>
             </a>
           </li>
-
+          <li class="nav-item">
+            <a href="card.php" class="nav-link">
+              <i class="nav-icon far fa-id-card"></i>
+              <p>
+                Credenciais
+              </p>
+            </a>
+          </li>
           <?php if($userData->access_level === "administrator"): ?>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon far fa-plus-square"></i>
+              <i class="nav-icon fas fa-cog"></i>
               <p>
                 Configurações
                 <i class="right fas fa-angle-left"></i>
