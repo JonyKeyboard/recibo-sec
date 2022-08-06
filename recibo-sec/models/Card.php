@@ -16,6 +16,10 @@
         public $validity;
         public $users_id;
 
+        public function imageGenerateName() {
+            return bin2hex(random_bytes(60)) . ".jpg";
+        }
+
     }
 
     interface CardDAOInterface {
@@ -23,8 +27,10 @@
         public function buildCard($data);
         public function findAll();
         public function findById($id);
-        public function create(Card $Card);
-        public function update(Card $Card);
+        public function findByCpf($cpf);
+        public function create(Card $card);
+        public function update(Card $card);
+        public function updateValidity($id);
         public function destroy($id);
 
     }

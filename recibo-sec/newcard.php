@@ -26,29 +26,29 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Registro</label>
-                                        <input type="text" class="form-control" name="register" placeholder="Digite o registro">
+                                        <input type="text" class="form-control registro" name="register" placeholder="Digite o registro">
                                     </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="form-group">
                                         <label>Cpf</label>
-                                        <input type="text" class="form-control" name="cpf" placeholder="Digite o Cpf">
+                                        <input type="text" class="form-control cpf" name="cpf" placeholder="Digite o Cpf">
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Rg</label>
-                                        <input type="text" class="form-control" name="generalRegister" placeholder="Digite o Rg">
+                                        <input type="text" class="form-control" name="generalRecord" placeholder="Digite o Rg">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Estado civil</label>
-                                        <select class="form-control">
-                                            <option value="1">Casado</option>
-                                            <option value="2">Viúvo</option>
-                                            <option value="3">Divorciado</option>
-                                            <option value="4">Outro</option>
+                                        <select class="form-control" name="maritalStatus">
+                                            <option value="Casado">Casado</option>
+                                            <option value="Viúvo">Viúvo</option>
+                                            <option value="Divorciado">Divorciado</option>
+                                            <option value="Outro">Outro</option>
                                         </select>
                                     </div>
                                 </div>
@@ -62,11 +62,11 @@
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Cargo</label>
-                                        <select class="form-control">
-                                            <option value="1">Pastor</option>
-                                            <option value="2">Evangelista</option>
-                                            <option value="3">Presbítero</option>
-                                            <option value="4">Diácono</option>
+                                        <select class="form-control" name="position">
+                                            <option value="Pastor">Pastor</option>
+                                            <option value="Evangelista">Evangelista</option>
+                                            <option value="Presbítero">Presbítero</option>
+                                            <option value="Diácono">Diácono</option>
                                         </select>
                                     </div>
                                 </div>
@@ -85,7 +85,7 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Validade</label>
-                                        <input type="text" class="form-control" name="validity" placeholder="Digite a validade" readonly>
+                                        <input type="text" class="form-control monthpicker" name="validity" placeholder="Digite a validade" readonly>
                                     </div>
                                 </div>
                             </div>   

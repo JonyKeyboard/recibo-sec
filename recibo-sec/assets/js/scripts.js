@@ -8,6 +8,7 @@ $(document).ready(function(){
 
     $('.datepicker, .date').mask("00/00/0000", {placeholder: "__/__/____"});
     $('.monthpicker').mask("00/0000", {placeholder: "__/____"});
+    $('.registro').mask("000.000", {placeholder: "___.___"});
     $('.cpf').mask("000.000.000-00", {placeholder: "___.___.___-__"});
     $('.cnpj').mask("00.000.000/0000-00", {placeholder: "__.___.___/____-__"});
     $('.cep').mask("00000-000", {placeholder: "_____-___"});
@@ -124,22 +125,6 @@ function ValidaCNPJ(cnpj) {
 
     return true;
 
-}
-
-//GERADOR DE SENHAS
-var Password = function() {
-    this.pass = "";
-    this.generate = function(chars) {
-        for (var i= 0; i<chars; i++) {
-            this.pass += this.getRandomChar();
-        }
-        return this.pass;
-    }
-    this.getRandomChar = function() {
-        var ascii = [[48, 57],[64,90],[97,122]];
-        var i = Math.floor(Math.random()*ascii.length);
-        return String.fromCharCode(Math.floor(Math.random()*(ascii[i][1]-ascii[i][0]))+ascii[i][0]);
-    }
 }
 
 function EmailValid(email){
