@@ -23,32 +23,40 @@
                 <table id="my_datatables" class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>#</th>
-                            <th>#</th>
-                            <th>#</th>
-                            <th>#</th>
+                            <th>Registro</th>
+                            <th>Nome</th>
+                            <th>Cpf</th>
+                            <th>Cargo</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($cardData as $card): ?>
                         <tr>
-                            <td><?= $receipt->payer ?></td>
-                            <td><?= $receipt->value ?></td>
-                            <td><?= $receipt->emission ?></td>
+                            <td class="registro"><?= $card->register ?></td>
+                            <td><?= $card->name ?></td>
+                            <td class="cpf"><?= $card->cpf ?></td>
+                            <td><?= $card->position ?></td>
                             <td class="actions-column">
-                                <a class="btn btn-primary btn-sm" href="#">
+                                <a class="btn btn-primary btn-sm" href="<?= $BASE_URL ?>editcard.php?id=<?= $card->id ?>">
                                     Editar
                                 </a>
+                                <form action="<?= $BASE_URL ?>card_process.php" method="POST">
+                                    <input type="hidden" name="type" value="delete">
+                                    <input type="hidden" name="id" value="<?= $card->id ?>">
+                                    <input type="submit" class="btn btn-danger btn-sm" value="Deletar">
+                                </form>
                             </td>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>
                     <tfoot>
                         <tr>
-                            <th>#</th>
-                            <th>#</th>
-                            <th>#</th>
-                            <th>#</th>
+                            <th>Registro</th>
+                            <th>Nome</th>
+                            <th>Cpf</th>
+                            <th>Cargo</th>
+                            <th>Ação</th>
                         </tr>
                     </tfoot>
                 </table>

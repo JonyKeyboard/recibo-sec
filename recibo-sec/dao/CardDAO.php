@@ -27,7 +27,7 @@
             $card->image = $data["image"];
             $card->generalRecord = $data["general_record"];
             $card->cpf = $data["cpf"];
-            $card->maritalStatus = $data["maritalStatus"];
+            $card->maritalStatus = $data["marital_status"];
             $card->placeOfBirth = $data["place_of_birth"];
             $card->worksplace = $data["worksplace"];
             $card->validity = $data["validity"];
@@ -37,7 +37,25 @@
 
         }
         public function findAll(){
-            return [];
+            
+            $cards = [];
+
+            $stmt = $this->conn->query("SELECT * FROM cards ORDER BY id DESC");
+
+            $stmt->execute();
+
+            if($stmt->rowCount() > 0){
+
+                $cardsArray = $stmt->fetchAll();
+
+                foreach($cardsArray as $card) {
+                    $cards[] = $this->buildCard($card);
+                }
+            }
+            
+            return $cards;
+
+
         }
         public function findById($id){
             

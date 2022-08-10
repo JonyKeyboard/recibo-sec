@@ -18,37 +18,34 @@ $userData = $userDao->verifyToken();
 if($type === "create"){
 
     $name = filter_input(INPUT_POST, "name");
-    $register = filter_input(INPUT_POST, "register");
+    $register = preg_replace( '/[^0-9]/is', '', filter_input(INPUT_POST, "register"));
     $position = filter_input(INPUT_POST, "position");
     $function = filter_input(INPUT_POST, "function");
     $generalRecord = filter_input(INPUT_POST, "generalRecord");
-    $cpf = filter_input(INPUT_POST, "cpf");
-    $formattedCpf = preg_replace( '/[^0-9]/is', '', $cpf );
+    $cpf = preg_replace( '/[^0-9]/is', '', filter_input(INPUT_POST, "cpf"));
     $maritalStatus = filter_input(INPUT_POST, "maritalStatus");
     $placeOfBirth = filter_input(INPUT_POST, "placeOfBirth");
     $worksplace = filter_input(INPUT_POST, "worksplace");
-    //$validity = filter_input(INPUT_POST, "validity");
     $users_id = filter_input(INPUT_POST, "users_id");
         
-    if(!empty($name) && !empty($formattedCpf) && !empty($position)) {
+    if(!empty($name) && !empty($cpf) && !empty($position)) {
 
-        if($cardDao->findByCpf($formattedCpf) === false){
+        if($cardDao->findByCpf($cpf) === false){
             
             $card = new Card();
 
             $card->name = $name;
-            $card->register = $register;
+            $card->register = intval($register);
             $card->position = $position;
             $card->function = $function;
             $card->generalRecord = $generalRecord;
-            $card->cpf = $formattedCpf;
+            $card->cpf = $cpf;
             $card->maritalStatus = $maritalStatus;
             $card->placeOfBirth = $placeOfBirth;
             $card->worksplace = $worksplace;
             $currentDate = new DateTime('+2 Year');
             $card->validity = $currentDate->format('m-Y');
             
-            //var_dump($card->validity);exit;
             $card->users_id = $userData->id;
 
             if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])){
@@ -76,10 +73,8 @@ if($type === "create"){
                 }
             }
 
-            //print_r($_POST);
-            //print_r($_FILES);exit;
-
             $cardDao->create($card);
+
         }else {
             $message->setMessage("Cpf já cadastrado", "danger", "back");
         }

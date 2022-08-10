@@ -33,7 +33,7 @@
                         <?php foreach($receiptsData as $receipt): ?>
                         <tr>
                             <td><?= $receipt->payer ?></td>
-                            <td><?= $receipt->value ?></td>
+                            <td>R$ <?= $receipt->value ?></td>
                             <td><?= $receipt->emission ?></td>
                             <td class="actions-column">
                                 <a class="btn btn-primary btn-sm" href="<?= $BASE_URL ?>editreceipt.php?id=<?= $receipt->id ?>">
