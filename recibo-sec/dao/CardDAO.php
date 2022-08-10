@@ -58,6 +58,29 @@
 
         }
         public function findById($id){
+
+            if($id != "") {
+                
+                $stmt = $this->conn->prepare("SELECT * FROM cards WHERE id = :id");
+
+                $stmt->bindParam(":id", $id);
+
+                $stmt->execute();
+
+                if($stmt->rowCount() > 0){
+                    
+                    $data = $stmt->fetch();
+                    $card = $this->buildCard($data);
+
+                    return $card;
+
+                } else {
+                    return false;
+                }
+
+            } else {
+                return false;
+            }
             
         }
         public function findByCpf($cpf){
@@ -111,12 +134,44 @@
 
             $stmt->execute();
 
-            // Msg add com sucesso
-            $this->message->setMessage("Membro adicionado com sucesso!", "success", "card.php");
+            $last_id = $this->conn->lastInsertId();
+
+            $this->message->setMessage("Recibo gerado com sucesso!","success", "editcard.php?id=". $last_id);
         
         }
-        public function update(Card $Card){
+        public function update(Card $card){
+
+            $stmt = $this->conn->prepare("UPDATE cards SET 
+                name = :name, 
+                register = :register,
+                position = :position, 
+                image = :image, 
+                general_record = :general_record, 
+                cpf = :cpf,
+                marital_status = :marital_status,
+                place_of_birth = :place_of_birth,
+                worksplace = :worksplace,
+                validity = :validity,
+                users_id = :users_id
+                WHERE id = :id");
+
+            $stmt->bindParam(":name", $card->name);
+            $stmt->bindParam(":register", $card->register);
+            $stmt->bindParam(":position", $card->position);
+            $stmt->bindParam(":image", $card->image);
+            $stmt->bindParam(":general_record", $card->generalRecord);
+            $stmt->bindParam(":cpf", $card->cpf);
+            $stmt->bindParam(":marital_status", $card->maritalStatus);
+            $stmt->bindParam(":place_of_birth", $card->placeOfBirth);
+            $stmt->bindParam(":worksplace", $card->worksplace);
+            $stmt->bindParam(":validity", $card->validity);
+            $stmt->bindParam(":users_id", $card->users_id);
+            $stmt->bindParam(":id", $card->id);
             
+            $stmt->execute();
+
+            $this->message->setMessage("Membro alterado com sucesso!","success", "editcard.php?id=". $card->id);
+
         }
         public function updateValidity($id){
             

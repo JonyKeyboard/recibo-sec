@@ -5,7 +5,7 @@ require_once("models/User.php");
 require_once("dao/ReceiptDAO.php");
 
 //$user = new User();
-$userDao = new UserDao($conn, $BASE_URL);
+$userDao = new UserDAO($conn, $BASE_URL);
 $userData = $userDao->verifyToken(true);
 
 $receiptDao = new ReceiptDAO($conn, $BASE_URL);
