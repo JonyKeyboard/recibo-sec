@@ -17,16 +17,18 @@ if(empty($id)) {
 
     if(!$cardData) {
         $message->setMessage("O membro não foi encontrado!", "danger", "card.php");
+    }else if($cardData->image == "") {
+        $cardData->image = "user.png";
     }
 } 
 ?>
 <section class="content">
     <div class="container-fluid">
-        <!-- SELECT2 EXAMPLE -->
         <div class="card card-default">
             <div class="card-header">
                 <h3 class="card-title">Gerador de Credenciais</h3>
                 <div class="card-tools">
+                    <a href="<?= $BASE_URL ?>receiptpdf.php?id=<?= $cardData->id ?>" target="_blank" class="btn btn-secondary sub-header-btn">Imprimir</a>
                     <a href="<?= $BASE_URL ?>card.php" class="btn btn-primary sub-header-btn">Voltar</a>
                 </div>
             </div>
@@ -66,10 +68,10 @@ if(empty($id)) {
                                     <div class="form-group">
                                         <label>Estado civil</label>
                                         <select class="form-control" name="maritalStatus">
-                                            <option value="Casado">Casado</option>
-                                            <option value="Viúvo">Viúvo</option>
-                                            <option value="Divorciado">Divorciado</option>
-                                            <option value="Outro">Outro</option>
+                                            <option value="Casado" <?= $cardData->maritalStatus === "Casado" ? "selected" : "" ?>>Casado</option>
+                                            <option value="Viúvo" <?= $cardData->maritalStatus === "Viúvo" ? "selected" : "" ?>>Viúvo</option>
+                                            <option value="Divorciado" <?= $cardData->maritalStatus === "Divorciado" ? "selected" : "" ?>>Divorciado</option>
+                                            <option value="Outro" <?= $cardData->maritalStatus === "Outro" ? "selected" : "" ?>>Outro</option>
                                         </select>
                                     </div>
                                 </div>
@@ -84,10 +86,10 @@ if(empty($id)) {
                                     <div class="form-group">
                                         <label>Cargo</label>
                                         <select class="form-control" name="position">
-                                            <option value="Pastor">Pastor</option>
-                                            <option value="Evangelista">Evangelista</option>
-                                            <option value="Presbítero">Presbítero</option>
-                                            <option value="Diácono">Diácono</option>
+                                            <option value="Pastor"<?= $cardData->position === "Pastor" ? "selected" : "" ?>>Pastor</option>
+                                            <option value="Evangelista"<?= $cardData->position === "Evangelista" ? "selected" : "" ?>>Evangelista</option>
+                                            <option value="Presbítero"<?= $cardData->position === "Presbítero" ? "selected" : "" ?>>Presbítero</option>
+                                            <option value="Diácono"<?= $cardData->position === "Diácono" ? "selected" : "" ?>>Diácono</option>
                                         </select>
                                     </div>
                                 </div>
@@ -112,12 +114,12 @@ if(empty($id)) {
                             </div>   
                         </div>
                         <div class="col-md-4">
-                            <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/members/<?= $userData->image ?>')"></div>
-                                <div class="form-group">
-                                    <label for="image">Foto:</label>
-                                    <input type="file" class="form-control-file" name="image">
-                                </div>
+                            <div id="card-image-container" style="background-image: url('<?= $BASE_URL ?>img/members/<?= $cardData->image ?>')"></div>
+                            <div class="form-group">
+                                <label for="image">Foto:</label>
+                                <input type="file" class="form-control-file" name="image">
                             </div>
+                        </div>
                         <div class="col-md-12">
                             <input type="submit" class="btn btn-primary myforms-btn" value="Editar membro">   
                         </div>

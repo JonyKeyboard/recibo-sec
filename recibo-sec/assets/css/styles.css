@@ -15,3 +15,14 @@
 .actions-column form {
   display: inline-block;
 }
+
+/* EDIT PROFILE */
+#card-image-container{
+    width: 150px;
+    height: 200px;
+    border: 8px solid #f1f1ee;
+    border-radius: 0%;
+    background-size: cover;
+    background-position: center;
+    margin: 15px auto;
+}
