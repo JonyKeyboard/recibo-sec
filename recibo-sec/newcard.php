@@ -1,5 +1,11 @@
 <?php
-  require_once("template/header.php")
+  require_once("template/header.php");
+  require_once("models/User.php");
+  
+  //$user = new User();
+  $userDao = new UserDAO($conn, $BASE_URL);
+  $userData = $userDao->verifyToken(true);
+  
 ?>
 <section class="content">
     <div class="container-fluid">
@@ -90,13 +96,6 @@
                                 </div>
                             </div>   
                         </div>
-                        <div class="col-md-4">
-                            <div id="profile-image-container" style="background-image: url('<?= $BASE_URL ?>img/members/<?= $userData->image ?>')"></div>
-                                <div class="form-group">
-                                    <label for="image">Foto:</label>
-                                    <input type="file" class="form-control-file" name="image">
-                                </div>
-                            </div>
                         <div class="col-md-12">
                             <input type="submit" class="btn btn-primary myforms-btn" value="Salvar">   
                         </div>

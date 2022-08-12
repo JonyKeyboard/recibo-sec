@@ -14,7 +14,6 @@ if(empty($id)) {
     $message->setMessage("O membro não foi encontrado!", "danger", "card.php");
 }else{
     $cardData = $cardDao->findById($id);
-    //var_dump($cardData);exit;
 
     if(!$cardData) {
         $message->setMessage("O membro não foi encontrado!", "danger", "card.php");

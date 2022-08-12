@@ -133,10 +133,10 @@
             $stmt->bindParam(":users_id", $card->users_id);
 
             $stmt->execute();
-
+            
             $last_id = $this->conn->lastInsertId();
-
-            $this->message->setMessage("Recibo gerado com sucesso!","success", "editcard.php?id=". $last_id);
+            
+            $this->message->setMessage("Membro Registrado com sucesso, Insira uma Foto!","success", "editcard.php?id=". $last_id);
         
         }
         public function update(Card $card){
@@ -178,5 +178,14 @@
         }
         public function destroy($id){
             
+            $stmt = $this->conn->prepare("DELETE FROM cards WHERE id = :id");
+
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            $this->message->setMessage("Membro removido com sucesso!", "success", "card.php");
+
+
         }
     }

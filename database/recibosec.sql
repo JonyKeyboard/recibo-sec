@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 12-Ago-2022 às 01:19
+-- Tempo de geração: 13-Ago-2022 às 00:51
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 7.4.15
 
@@ -43,17 +43,6 @@ CREATE TABLE `cards` (
   `users_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `cards`
---
-
-INSERT INTO `cards` (`id`, `name`, `register`, `position`, `function`, `image`, `general_record`, `cpf`, `marital_status`, `place_of_birth`, `worksplace`, `validity`, `users_id`) VALUES
-(10, 'Stanley Jony', 100, 'Diácono', 'auxiliar', NULL, '1231231', '10457924462', 'Casado', 'CAMPINA GRANDE - PB', 'Campina Grande', '08-2024', 8),
-(15, 'Jony', 112222, 'Pastor', '', NULL, '', '44444444444', 'Casado', 'CAMPINA GRANDE - PB', '', '08-2024', 8),
-(16, 'Joao Da Costa', 100111, 'Diácono', 'Obreiro Auxiliar', 'd52358e2901d7065ed9635a22f7f712726720585da30cf390fc866e54bb92c197a20d148ea23543086633ae7705088d4dd9da8a3f34bef49d170e913.jpg', '1231231', '10855577744', 'Viúvo', 'Perdido - SP', 'Campina Grande', '08-2024', 8),
-(17, 'Antonio da Carreira', 100112, 'Pastor', 'Obreiro Auxiliar', NULL, '1231231', '99988221111', 'Casado', 'CAMPINA GRANDE - PB', 'Campina Grande', '08-2024', 8),
-(18, 'Antonio da Carreira 5', 100112, 'Pastor', 'Obreiro Auxiliar', '69d13cdbbb2f3d1864559ac706b356ec23d7f675eed8f3b41e85364d37dede17afba13bfe0b725e7238311600487f4c283e6331c3d73df56c9db78b1.jpg', '1231231', '99988221111', 'Casado', 'CAMPINA GRANDE - PB', 'Campina Grande', '08-2024', 8);
-
 -- --------------------------------------------------------
 
 --
@@ -69,16 +58,6 @@ CREATE TABLE `receipts` (
   `description` text DEFAULT NULL,
   `users_id` int(11) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `receipts`
---
-
-INSERT INTO `receipts` (`id`, `payer`, `cpf`, `value`, `emission`, `description`, `users_id`) VALUES
-(64, 'teste sacado4', '10457924462', '333.33', '2022-08-05', 'teste2', 8),
-(66, 'teste sacado2', '12312312312', '3.33', '2022-08-06', '123erwr wer we ', 8),
-(67, 'Melissa Isabel', '11111111111', '50.00', '2022-08-06', 'Comprou um bujão', 8),
-(68, 'teste sacado10000', '12312312312', '34343.43', '2022-08-10', '', 8);
 
 -- --------------------------------------------------------
 
@@ -101,7 +80,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `image`, `token`, `access_level`) VALUES
-(8, 'stanley', '1jony2jony@gmail.com', '$2y$10$e3I8EVCo/azv0DO8XTbUKu113fkS7zeqOr44azbpst6SLqu2LACbW', NULL, '2b8a3e16cb880f438f43e657964a20f7bfedddd7577f6edab7afcde7c21122a07bfa6eda92fc989df4b1555182900abd9ba1', 'administrator');
+(1, 'admin', 'admin@gmail.com', '$2y$10$UxuOEeM1ojRw6nh0afr56eI9KF1cXjhgJBt1W7mzscD7C8YNs7HO.', NULL, '279bd2ecfa41d5c48171e412b2a5ba933a7e79589e95a36505c1ee9accd91f2f9db0d320e083c0d5b90f472ce5ca23872166', 'administrator');
 
 --
 -- Índices para tabelas despejadas
@@ -135,19 +114,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `cards`
 --
 ALTER TABLE `cards`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `receipts`
 --
 ALTER TABLE `receipts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
-
---
--- AUTO_INCREMENT de tabela `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -26,7 +26,7 @@ if($type === "create"){
     $maritalStatus = filter_input(INPUT_POST, "maritalStatus");
     $placeOfBirth = filter_input(INPUT_POST, "placeOfBirth");
     $worksplace = filter_input(INPUT_POST, "worksplace");
-    $users_id = filter_input(INPUT_POST, "users_id");
+    //$users_id = filter_input(INPUT_POST, "users_id");
         
     if(!empty($name) && !empty($cpf) && !empty($position)) {
 
@@ -47,32 +47,7 @@ if($type === "create"){
             $card->validity = $currentDate->format('m-Y');
             
             $card->users_id = $userData->id;
-
-            if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])){
-
-                $image = $_FILES["image"];
-                $imageTypes = ["image/jpeg", "image/jpg", "image/png"];
-                $jpgArray = ["image/jpeg", "image/jpg"];
             
-                if(in_array($image["type"], $imageTypes)) {
-
-                    if(in_array($image["type"], $jpgArray)){
-                        $imageFile = imagecreatefromjpeg($image["tmp_name"]);
-                    } else {
-                        $imageFile = imagecreatefrompng($image["tmp_name"]);
-                    }
-
-                    $imageName = $card->imageGenerateName();
-
-                    imagejpeg($imageFile, "./img/members/". $imageName, 100);
-
-                    $card->image = $imageName;
-
-                } else {
-                    $message->setMessage("Tipo de imagem inválida, insira png ou jpg!", "danger", "back");
-                }
-            }
-
             $cardDao->create($card);
 
         }else {
@@ -149,6 +124,22 @@ if($type === "create"){
 
 } else if($type === "delete"){
 
-    
+    $id = filter_input(INPUT_POST, "id");
+
+    $cardData = $cardDao->findById($id);
+
+    if($cardData) {
+
+        if($userData->access_level === "administrator") {
+
+            $cardDao->destroy($cardData->id);
+
+        } else {
+            $message->setMessage("Você não tem permissão para deletar membros!", "danger", "back");
+        }
+
+    } else {
+        $message->setMessage("Membro não encontrado!", "danger", "back");
+    }
 
 }

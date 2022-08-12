@@ -131,7 +131,6 @@
 
             $stmt->execute();
 
-            // Msg success remove movie
             $this->message->setMessage("Recibo removido com sucesso!", "success", "receipt.php");
 
         }

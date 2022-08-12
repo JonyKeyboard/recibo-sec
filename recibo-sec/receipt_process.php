@@ -34,8 +34,6 @@ if($type === "create"){
         $receipt->description = $description;
         $receipt->users_id = $userData->id;
 
-        var_dump($receipt);exit;
-
         $receiptDao->create($receipt);
     
     } else {
