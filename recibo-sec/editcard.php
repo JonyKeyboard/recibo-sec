@@ -14,11 +14,13 @@ if(empty($id)) {
     $message->setMessage("O membro não foi encontrado!", "danger", "card.php");
 }else{
     $cardData = $cardDao->findById($id);
+    //var_dump($cardData);exit;
 
     if(!$cardData) {
         $message->setMessage("O membro não foi encontrado!", "danger", "card.php");
     }else if($cardData->image == "") {
         $cardData->image = "user.png";
+        
     }
 } 
 ?>
@@ -28,7 +30,7 @@ if(empty($id)) {
             <div class="card-header">
                 <h3 class="card-title">Gerador de Credenciais</h3>
                 <div class="card-tools">
-                    <a href="<?= $BASE_URL ?>receiptpdf.php?id=<?= $cardData->id ?>" target="_blank" class="btn btn-secondary sub-header-btn">Imprimir</a>
+                    <a href="<?= $BASE_URL ?>cardpdf.php?id=<?= $cardData->id ?>" target="_blank" class="btn btn-secondary sub-header-btn">Imprimir</a>
                     <a href="<?= $BASE_URL ?>card.php" class="btn btn-primary sub-header-btn">Voltar</a>
                 </div>
             </div>

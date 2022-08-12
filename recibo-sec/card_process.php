@@ -89,6 +89,8 @@ if($type === "create"){
     $register = preg_replace( '/[^0-9]/is', '', filter_input(INPUT_POST, "register"));
     $position = filter_input(INPUT_POST, "position");
     $function = filter_input(INPUT_POST, "function");
+    //$image = filter_input(INPUT_POST, "image");
+    //var_dump($image);exit;
     $generalRecord = filter_input(INPUT_POST, "generalRecord");
     $cpf = preg_replace( '/[^0-9]/is', '', filter_input(INPUT_POST, "cpf"));
     $maritalStatus = filter_input(INPUT_POST, "maritalStatus");
@@ -105,6 +107,7 @@ if($type === "create"){
         $card->register = intval($register);
         $card->position = $position;
         $card->function = $function;
+        //$card->image = $image;
         $card->generalRecord = $generalRecord;
         $card->cpf = $cpf;
         $card->maritalStatus = $maritalStatus;
@@ -146,8 +149,6 @@ if($type === "create"){
         $message->setMessage("Adicione nome, cpf e cargo!", "danger", "back");
     }
 
-    
-    
 } else if($type === "delete"){
 
     
