@@ -89,8 +89,6 @@ if($type === "create"){
     $register = preg_replace( '/[^0-9]/is', '', filter_input(INPUT_POST, "register"));
     $position = filter_input(INPUT_POST, "position");
     $function = filter_input(INPUT_POST, "function");
-    //$image = filter_input(INPUT_POST, "image");
-    //var_dump($image);exit;
     $generalRecord = filter_input(INPUT_POST, "generalRecord");
     $cpf = preg_replace( '/[^0-9]/is', '', filter_input(INPUT_POST, "cpf"));
     $maritalStatus = filter_input(INPUT_POST, "maritalStatus");
@@ -98,25 +96,25 @@ if($type === "create"){
     $worksplace = filter_input(INPUT_POST, "worksplace");
     $users_id = filter_input(INPUT_POST, "users_id");
     $id = filter_input(INPUT_POST, "id");
+
+    $cardData = $cardDao->findById($id);
         
     if(!empty($name) && !empty($cpf) && !empty($position)) {
- 
-        $card = new Card();
 
-        $card->name = $name;
-        $card->register = intval($register);
-        $card->position = $position;
-        $card->function = $function;
-        //$card->image = $image;
-        $card->generalRecord = $generalRecord;
-        $card->cpf = $cpf;
-        $card->maritalStatus = $maritalStatus;
-        $card->placeOfBirth = $placeOfBirth;
-        $card->worksplace = $worksplace;
+        $cardData->name = $name;
+        $cardData->register = intval($register);
+        $cardData->position = $position;
+        $cardData->function = $function;
+        $cardData->generalRecord = $generalRecord;
+        $cardData->cpf = $cpf;
+        $cardData->maritalStatus = $maritalStatus;
+        $cardData->placeOfBirth = $placeOfBirth;
+        $cardData->worksplace = $worksplace;
         $currentDate = new DateTime('+2 Year');
-        $card->validity = $currentDate->format('m-Y');
-        $card->users_id = $userData->id;
-        $card->id = $id;
+        $cardData->validity = $currentDate->format('m-Y');
+        $cardData->users_id = $userData->id;
+        $cardData->id = $id;
+
 
         if(isset($_FILES["image"]) && !empty($_FILES["image"]["tmp_name"])){
 
@@ -132,18 +130,18 @@ if($type === "create"){
                     $imageFile = imagecreatefrompng($image["tmp_name"]);
                 }
 
-                $imageName = $card->imageGenerateName();
+                $imageName = $cardData->imageGenerateName();
 
                 imagejpeg($imageFile, "./img/members/". $imageName, 100);
 
-                $card->image = $imageName;
+                $cardData->image = $imageName;
 
             } else {
                 $message->setMessage("Tipo de imagem inválida, insira png ou jpg!", "danger", "back");
             }
         }
 
-        $cardDao->update($card);
+        $cardDao->update($cardData);
 
     } else {
         $message->setMessage("Adicione nome, cpf e cargo!", "danger", "back");

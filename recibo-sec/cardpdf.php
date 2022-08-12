@@ -30,11 +30,20 @@ $pdf->setPrintFooter(false);
 //============================================================+
 $pdf->AddPage("L");
 
+// ------ FUNDO DA PÁGINA
 $bMargin = $pdf->getBreakMargin();
 $auto_page_break = $pdf->getAutoPageBreak();
 $pdf->SetAutoPageBreak(false, 0);
-$img_file = "pdf/img/card-frente.png";
+$img_file = "img/card-models/frente.jpeg";
 $pdf->Image($img_file, 0, 0, 297, 210, '', '', '', false, 300, '', false, false, 0);
+// ------ FUNDO DA PÁGINA
+
+
+// ------ FOTO
+$pdf->setJPEGQuality(75);
+$image = 'img/members/' . $cardData->image;
+$pdf->Image( $image, 9, 9, 75, 110, 'JPG', '', '', true, 150, '', false, false, 0, false, false, false);
+// ------ FOTO
 
 $pdf->setFont('helvetica', '', 35);
 // ------ NOME
@@ -67,7 +76,7 @@ $pdf->AddPage("L");
 $bMargin = $pdf->getBreakMargin();
 $auto_page_break = $pdf->getAutoPageBreak();
 $pdf->SetAutoPageBreak(false, 0);
-$img_file = "pdf/img/card-verso.png";
+$img_file = "img/card-models/verso.jpeg";
 $pdf->Image($img_file, 0, 0, 297, 210, '', '', '', false, 300, '', false, false, 0);
 
 $pdf->setFont('helvetica', '', 35);
